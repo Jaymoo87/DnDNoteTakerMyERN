@@ -18,3 +18,5 @@ app.use(notFoundHandler);
 app.use(globalErrorHandler);
 
 app.listen(config.app.port, () => console.log(`server runnin on Port ${config.app.port}! Good Shit.`));
+
+// TESTING
