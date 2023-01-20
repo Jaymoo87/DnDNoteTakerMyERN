@@ -1,10 +1,12 @@
 import { Router } from "express";
+import db from "../../db";
 
 const router = Router();
 
-router.get("/", (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-    res.json("get all notes");
+    const results = await db.notes.getAllNotes();
+    res.json(results);
   } catch (error) {
     res.status(500).json({ error: "" });
   }
