@@ -1,6 +1,6 @@
 import { Query } from "../pool";
 
-interface UsersTable {
+export interface UsersTable {
   id?: string;
   email?: string;
   password?: string;

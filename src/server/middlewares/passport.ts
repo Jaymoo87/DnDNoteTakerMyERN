@@ -15,16 +15,13 @@ export function configurePassport(app: Express) {
         try {
           const [userFound] = await db.user.find("email", email);
 
-          if (!userFound) {
-            done(null, false);
+          if (userFound && (await bcrypt.compare(password, userFound.password))) {
+            delete userFound.password;
+            return done(null, userFound);
           }
-          if (!(await bcrypt.compare(password, userFound.password))) {
-            done(null, false);
-          }
-          delete userFound.password;
-          done(null, userFound);
+          done(null, false, { message: "invalid creds" });
         } catch (error) {
-          done(error);
+          return done(error);
         }
       }
     )
