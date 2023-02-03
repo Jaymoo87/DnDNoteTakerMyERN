@@ -1,7 +1,9 @@
 import passport from "passport";
 import PassportLocal from "passport-local";
+import PassportJWT from "passport-jwt";
 import { Express } from "express";
 import db from "../db";
+import config from "../config";
 import bcrypt from "bcrypt";
 
 export function configurePassport(app: Express) {
@@ -20,6 +22,22 @@ export function configurePassport(app: Express) {
             return done(null, userFound);
           }
           done(null, false, { message: "invalid creds" });
+        } catch (error) {
+          return done(error);
+        }
+      }
+    )
+  );
+
+  passport.use(
+    new PassportJWT.Strategy(
+      {
+        jwtFromRequest: PassportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
+        secretOrKey: config.jwt.secret,
+      },
+      (payload, done) => {
+        try {
+          done(null, payload);
         } catch (error) {
           return done(error);
         }
