@@ -51,7 +51,7 @@ router.put("/:id", async (req, res, next) => {
       ...req.body,
     };
     const result = await db.notes.updateNote(noteDTO, id, userid);
-    res.json(result);
+    res.json({ id: noteDTO.id, message: "note updated" });
   } catch (error) {
     res.status(500).json({ error: " fucked it up" });
   }
@@ -62,7 +62,12 @@ router.delete("/:id", async (req, res, next) => {
     const id = req.params.id;
     const userid = req.payload.id;
     const result = await db.notes.deleteNote(id, userid);
-    res.json(result);
+
+    if (result.affectedRows) {
+      res.json({ id, message: "note deleted" });
+    } else {
+      res.json("TF?!?? shit aint even there");
+    }
   } catch (error) {
     res.status(500).json({ error: "nope" });
   }
