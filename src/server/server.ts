@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import path from "path";
 
 import routes from "./routes";
 import config from "./config";
@@ -16,6 +17,7 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(routes);
+app.get(["/login", "/private"], (req, res) => res.sendFile(path.join(__dirname, "../public/index.html")));
 app.use(notFoundHandler);
 app.use(globalErrorHandler);
 
