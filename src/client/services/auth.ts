@@ -10,6 +10,15 @@ const loginUser = async (payload: { [key: string]: string }) => {
   }
 };
 
+const validateToken = async () => {
+  try {
+    await baseService.get("/auth/validate/me");
+  } catch (error) {
+    throw error;
+  }
+};
+
 export default {
   loginUser,
+  validateToken,
 };
