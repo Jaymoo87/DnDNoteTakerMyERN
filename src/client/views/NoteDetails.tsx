@@ -18,16 +18,18 @@ const NoteDetails = () => {
 
   return (
     <div>
-      <h1>Note Details</h1>
-      {details && (
-        <div>
-          <h2>{details.first_name}</h2>
-          <small>{details.created_at}</small>
-          <p>{details.body}</p>
-        </div>
-      )}
+      <div>
+        <h1>Note Details</h1>
+        {details && (
+          <div>
+            <h2>{details.first_name}</h2>
+            <small>{details.created_at}</small>
+            <p>{details.body}</p>
+          </div>
+        )}
 
-      <Link to={"/notes"}></Link>
+        <Link to={"/notes"}></Link>
+      </div>
     </div>
   );
 };

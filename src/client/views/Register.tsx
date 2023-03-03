@@ -1,26 +1,15 @@
 import React, { useState } from "react";
 import { useAuth } from "../utilities/use-auth";
+import { useForm } from "../utilities/use-form";
 import authService from "../services/auth";
 
 interface RegisterProps {}
 
 const Register = () => {
   const { signin } = useAuth();
-
-  const [values, setValues] = useState<{ [key: string]: string }>({
-    email: "register@test.com",
-    password: "password123",
-    first_name: "Test",
-    last_name: "Register",
-  });
   const [error, setError] = useState<string>("");
 
-  const handleChanges = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValues((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
+  const { values, handleChanges } = useForm<{ [key: string]: string }>({});
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

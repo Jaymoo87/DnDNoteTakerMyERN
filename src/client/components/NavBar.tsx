@@ -11,6 +11,7 @@ const NavBar = (props: NavBarProps) => {
       <Link to="/private">Private</Link>
       <Link to="/register">Register</Link>
       <Link to="/notes">Notes</Link>
+      <Link to="/notes/new">AddNote</Link>
     </div>
   );
 };

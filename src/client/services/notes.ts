@@ -16,7 +16,17 @@ const getOneNote = async (id: string) => {
   }
 };
 
+const addNewNote = async (payload: { [key: string]: string }) => {
+  try {
+    const { id } = await baseService.post("/api/notes", payload);
+    return id;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export default {
   getAllNotes,
   getOneNote,
+  addNewNote,
 };

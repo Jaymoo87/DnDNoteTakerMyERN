@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+
 import authService from "../services/auth";
+import { useForm } from "../utilities/use-form";
 import { useAuth } from "../utilities/use-auth";
 
 interface LoginProps {}
@@ -8,15 +10,9 @@ interface LoginProps {}
 const Login = (props: LoginProps) => {
   const { signin } = useAuth();
   const location = useLocation();
-  const [values, setValues] = useState<{ [key: string]: string }>({});
   const [error, setError] = useState<string>("");
 
-  const handleChanges = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValues((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
+  const { values, handleChanges } = useForm<{ [key: string]: string }>({});
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
