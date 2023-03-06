@@ -45,7 +45,9 @@ const NoteDetails = (props: NoteDetailsProps) => {
         )}
 
         <Link to={"/notes"}>Go Back</Link>
-        <Link to={`/notes/${id}/update`}>Edit Note</Link>
+        <Link to={`/notes/${id}/update`} state={details?.body}>
+          Edit Note
+        </Link>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { useForm } from "../utilities/use-form";
 import notesService from "../services/notes";
 
@@ -8,13 +8,23 @@ interface UpdateNoteProps {}
 const UpdateNote = (props: UpdateNoteProps) => {
   const { id } = useParams();
   const nav = useNavigate();
-  const { values, handleChanges } = useForm<{ body: string }>({ body: "" });
+  const { state } = useLocation();
+  const { values, handleChanges, setValues } = useForm<{ body: string }>((state && { body: state }) || { body: "" });
+
+  useEffect(() => {
+    if (!state) {
+      notesService
+        .getOneNote(id)
+        .then((data) => setValues({ body: data.body }))
+        .catch((e) => console.log(e.message));
+    }
+  }, [id]);
 
   const handleUpdate = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     notesService
       .updateNote(id, values)
-      .then((id) => nav(`/notes/${id}`))
+      .then(() => nav(`/notes/${id}`))
       .catch((e) => console.log(e.message));
   };
 
