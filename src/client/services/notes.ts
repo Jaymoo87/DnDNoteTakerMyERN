@@ -4,7 +4,9 @@ const getAllNotes = async () => {
   try {
     const notes = await baseService.get("/api/notes");
     return notes;
-  } catch (error) {}
+  } catch (error) {
+    throw error;
+  }
 };
 
 const getOneNote = async (id: string) => {
@@ -25,8 +27,26 @@ const addNewNote = async (payload: { [key: string]: string }) => {
   }
 };
 
+const deleteNote = async (id: string) => {
+  try {
+    await baseService.destroy(`/api/notes/${id}`);
+  } catch (error) {
+    throw error;
+  }
+};
+
+const updateNote = async (id: string, payload: { [key: string]: string }) => {
+  try {
+    await baseService.update(`/api/notes/${id}`, payload);
+  } catch (error) {
+    throw error;
+  }
+};
+
 export default {
   getAllNotes,
   getOneNote,
   addNewNote,
+  deleteNote,
+  updateNote,
 };

@@ -13,7 +13,7 @@ const AddNote = (props: AddNoteProps) => {
     e.preventDefault();
     notesService
       .addNewNote(values)
-      .then((id) => nav(`/api/notes/${id}`))
+      .then((id) => nav(`/notes/${id}`))
       .catch((e) => console.log(e.message));
   };
 

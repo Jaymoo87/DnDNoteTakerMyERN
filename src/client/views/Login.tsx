@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import authService from "../services/auth";
@@ -22,8 +22,6 @@ const Login = (props: LoginProps) => {
       .then(() => signin("/private"))
       .catch((e) => setError(e.message));
   };
-
-  useEffect(() => {}, []);
 
   return (
     <div>

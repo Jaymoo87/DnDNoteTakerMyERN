@@ -30,11 +30,9 @@ const json = async (url: string, method: string, body?: { [key: string]: string 
     if (fetchResponse.ok) {
       return response;
     } else {
-      console.error("[fetch error]", response);
       throw new Error(response.error || response.message || "something went wrong");
     }
   } catch (error) {
-    console.log(error);
     throw error;
   }
 };

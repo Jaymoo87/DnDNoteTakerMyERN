@@ -13,6 +13,7 @@ const loginUser = async (payload: { [key: string]: string }) => {
 const registerUser = async (payload: { [key: string]: string }) => {
   try {
     const { token } = await baseService.post("/auth/register", payload);
+    storage.setToken(token);
   } catch (error) {
     throw error;
   }

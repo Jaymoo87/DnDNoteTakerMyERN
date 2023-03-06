@@ -5,7 +5,7 @@ export interface NotesTable {
   id?: string;
   userid?: string;
   body?: string;
-  created_at?: string | Date;
+  created_at?: string;
 }
 
 const getAllNotes = () =>
@@ -17,7 +17,7 @@ const getOneNote = (id: string) =>
     "SELECT notes.*, users.first_name FROM notes JOIN users ON users.id = notes.userid WHERE notes.id=?",
     [id]
   );
-const insertNote = (values: NotesTable) => Query("INSERT INTO Notes SET ?", [values]);
+const insertNote = (values: NotesTable) => Query("INSERT INTO notes SET ?", [values]);
 const deleteNote = (id: string, userid: string) => Query("DELETE FROM Notes WHERE id=? AND userid=?", [id, userid]);
 const updateNote = (editedNote: NotesTable, id: string, userid: string) =>
   Query<(NotesTable & UsersTable)[]>("UPDATE Notes SET ? WHERE id=? AND userid=?", [editedNote, id, userid]);

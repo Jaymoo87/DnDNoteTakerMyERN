@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { checkToken } from "../../middlewares/auth.mw";
 
-import { createJWT } from "../../utils/token";
+// import { createJWT } from "../../utils/token";
 
 const validateRouter = Router();
 

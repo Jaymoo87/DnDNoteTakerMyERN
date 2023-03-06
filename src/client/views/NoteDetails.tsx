@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 import noteService from "../services/notes";
 
 interface NoteDetailsProps {}
 
-const NoteDetails = () => {
+const NoteDetails = (props: NoteDetailsProps) => {
+  const nav = useNavigate();
   const { id } = useParams();
   const [details, setDetails] = useState<{ [key: string]: any }>(null);
 
@@ -16,6 +17,13 @@ const NoteDetails = () => {
       .catch((error) => console.log(error));
   }, [id]);
 
+  const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
+    noteService
+      .deleteNote(id)
+      .then(() => nav("/notes"))
+      .catch((e) => console.log(e.message));
+  };
+
   return (
     <div>
       <div>
@@ -24,11 +32,20 @@ const NoteDetails = () => {
           <div>
             <h2>{details.first_name}</h2>
             <small>{details.created_at}</small>
-            <p>{details.body}</p>
+            <button onClick={handleDelete}>Delete</button>
+            <div>
+              {details.body.split("\n").map((para, index) => (
+                <p key={`para-index-${index}`}>
+                  {para}
+                  <br />
+                </p>
+              ))}
+            </div>
           </div>
         )}
 
-        <Link to={"/notes"}></Link>
+        <Link to={"/notes"}>Go Back</Link>
+        <Link to={`/notes/${id}/update`}>Edit Note</Link>
       </div>
     </div>
   );

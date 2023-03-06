@@ -9,3 +9,4 @@ export { default as Profile } from "./Profile";
 export { default as Notes } from "./Notes";
 export { default as NoteDetails } from "./NoteDetails";
 export { default as AddNote } from "./AddNote";
+export { default as UpdateNote } from "./UpdateNote";

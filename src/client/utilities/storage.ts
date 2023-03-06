@@ -4,13 +4,12 @@ const getToken = () => {
   return token;
 };
 
-const removeToken = () => {
-  localStorage.removeItem(TOKEN_KEY);
-  return true;
-};
-
 const setToken = (token: string) => {
   localStorage.setItem(TOKEN_KEY, token);
+  return true;
+};
+const removeToken = () => {
+  localStorage.removeItem(TOKEN_KEY);
   return true;
 };
 
