@@ -1,5 +1,6 @@
 const path = require("path");
 const nodeExternals = require("webpack-node-externals");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const clientConfig = {
   mode: process.env.NODE_ENV || "development",
@@ -16,6 +17,10 @@ const clientConfig = {
           configFile: "tsconfig.json",
         },
       },
+      {
+        test: /\.css$/,
+        use: ["style-loader", { loader: "css-loader", options: { importLoaders: 1 } }, "postcss-loader"],
+      },
     ],
   },
   resolve: {
@@ -25,6 +30,8 @@ const clientConfig = {
     filename: "app.js",
     path: path.resolve(__dirname, "public/js"),
   },
+
+  plugins: [new HtmlWebPackPlugin({ template: "public/index.html" })],
 };
 
 const serverConfig = {
