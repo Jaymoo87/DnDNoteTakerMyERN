@@ -1,17 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { SiDungeonsanddragons } from "react-icons/si";
 
-interface NavBarProps {}
+interface NavBarProps {
+  toggleVisible: () => void;
+}
 
-const NavBar = (props: NavBarProps) => {
+const NavBar = ({ toggleVisible }: NavBarProps) => {
   return (
     <div>
-      <Link to="/">Home</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/private">Private</Link>
-      <Link to="/register">Register</Link>
-      <Link to="/notes">Notes</Link>
-      <Link to="/notes/new">AddNote</Link>
+      <button onClick={toggleVisible} className="btn btn-square btn-ghost">
+        <SiDungeonsanddragons className="text-3xl md:text-3xl" />
+      </button>
     </div>
   );
 };
