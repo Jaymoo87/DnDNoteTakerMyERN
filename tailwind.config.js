@@ -3,5 +3,8 @@ module.exports = {
   plugins: [require("daisyui")],
   daisyui: {
     themes: ["garden"],
+    fontFamily: {
+      serif: ["DM Serif Display"],
+    },
   },
 };

@@ -19,7 +19,7 @@ const Notes = () => {
       <h1>Notes</h1>
       <div>
         {notes.map((note) => (
-          <div key={`note-key-${note.id}`}>
+          <div className="p-3 m-2 shadow-lg card bg-primary" key={`note-key-${note.id}`}>
             <h2>{note.first_name}</h2>
             <Link to={`/notes/${note.id}`}>
               <button>View This Note</button>

@@ -25,24 +25,33 @@ const Login = (props: LoginProps) => {
 
   return (
     <div>
-      <h1>Login</h1>
+      <h1 className="m-3 font-serif">Login</h1>
       <div>
-        <form>
+        <form className="p-2 artboard bg-info col-2">
+          <label className="label label-primary">
+            <span className="label-text">Email:</span>
+          </label>
           <input
             type="email"
             name="email"
             value={values.email || ""}
             onChange={handleChanges}
             autoComplete="current-email"
+            className="mb-2 rounded input-sm input-border input-primary"
           />
+          <br />
           <input
             type="password"
             name="password"
             value={values.password || ""}
             onChange={handleChanges}
             autoComplete="current-password"
+            className="mb-2 rounded input-sm input-border input-primary"
           />
-          <button onClick={handleClick}>Login</button>
+          <br />
+          <button onClick={handleClick} className="font-serif btn btn-secondary">
+            Login
+          </button>
         </form>
         {location.state?.message && <div>{location.state?.message}</div>}
         {error && <div>{error}</div>}

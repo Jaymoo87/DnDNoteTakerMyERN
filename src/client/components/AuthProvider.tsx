@@ -41,7 +41,7 @@ const AuthProvider = (props: AuthProviderProps) => {
       });
   }, []);
 
-  if (authState.checking) return <h1>Loading...</h1>;
+  if (authState.checking) return <progress className="w-56 progress progress-primary"></progress>;
 
   return <AuthContext.Provider value={[authState, setAuthState]}>{props.children}</AuthContext.Provider>;
 };
