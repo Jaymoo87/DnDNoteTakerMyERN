@@ -41,7 +41,7 @@ const AuthProvider = (props: AuthProviderProps) => {
       });
   }, []);
 
-  if (!authState.authenticated) return <h1>Loading...</h1>;
+  if (authState.checking) return <h1>Loading...</h1>;
 
   return <AuthContext.Provider value={[authState, setAuthState]}>{props.children}</AuthContext.Provider>;
 };
