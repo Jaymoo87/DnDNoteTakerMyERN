@@ -18,12 +18,21 @@ const AddNote = (props: AddNoteProps) => {
   };
 
   return (
-    <div>
-      <h1>AddNote</h1>
+    <div className="grid w-auto p-4 m-3 justify-self-center rounded-3xl justify-items-center bg-neutral">
+      <h1 className="flex justify-center h-10 p-2 m-3 font-serif font-bold text-black rounded shadow w-44 bg-secondary">
+        AddNote
+      </h1>
       <div>
-        <form>
-          <textarea name="body" value={values.body} rows={10} cols={100} onChange={handleChanges} />
-          <button type="button" className="btn" onClick={handleSubmit}>
+        <form className="flex justify-center form-control">
+          <textarea
+            name="body"
+            value={values.body}
+            rows={10}
+            cols={100}
+            onChange={handleChanges}
+            className="p-5 border rounded-lg shadow-lg border-primary"
+          />
+          <button type="button" className="flex w-40 m-3 btn btn-success" onClick={handleSubmit}>
             Jot That Down
           </button>
         </form>

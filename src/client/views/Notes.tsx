@@ -15,20 +15,22 @@ const Notes = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Notes</h1>
-      <div>
+    <article className="grid w-auto p-4 m-3 justify-self-center rounded-3xl justify-items-center bg-neutral">
+      <h1 className="flex justify-center h-10 p-2 font-serif font-bold text-black rounded shadow w-44 bg-secondary">
+        Notes
+      </h1>
+      <div className="flex flex-col-reverse justify-center ">
         {notes.map((note) => (
-          <div className="p-3 m-2 shadow-lg card bg-primary" key={`note-key-${note.id}`}>
+          <div className="p-3 m-2 text-black shadow-lg card bg-secondary" key={`note-key-${note.id}`}>
             <h2>{note.first_name}</h2>
-            <Link to={`/notes/${note.id}`}>
-              <button>View This Note</button>
+            <p className="flex justify-center">{note.body.slice(0, 125)} ...</p>
+            <Link to={`/notes/${note.id}`} className="flex justify-end">
+              <button className=" btn btn-primary btn-sm">View This Note</button>
             </Link>
-            <p>{note.body.slice(0, 125)} ...</p>
           </div>
         ))}
       </div>
-    </div>
+    </article>
   );
 };
 
