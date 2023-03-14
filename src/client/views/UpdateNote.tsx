@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { useForm } from "../utilities/use-form";
 import notesService from "../services/notes";
+import { GiScrollQuill } from "react-icons/gi";
 
 interface UpdateNoteProps {}
 
@@ -30,7 +31,12 @@ const UpdateNote = (props: UpdateNoteProps) => {
 
   return (
     <div>
-      <h1>Update Note</h1>
+      <div>
+        <span>
+          <GiScrollQuill className="text-2xl" />
+        </span>
+        <h1>Update Note</h1>
+      </div>
       <div>
         <form>
           <textarea name="body" value={values.body} rows={10} cols={100} onChange={handleChanges}></textarea>

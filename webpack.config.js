@@ -40,7 +40,7 @@ const serverConfig = {
   module: {
     rules: [
       {
-        test: /|.ts?$/,
+        test: /\.ts?$/,
         loader: "ts-loader",
         exclude: /node_modules/,
         options: {

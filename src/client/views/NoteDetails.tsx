@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import { GiScrollUnfurled } from "react-icons/gi";
 
 import noteService from "../services/notes";
 
@@ -25,17 +26,26 @@ const NoteDetails = (props: NoteDetailsProps) => {
   };
 
   return (
-    <div>
+    <div className="container p-4 mx-auto rounded-lg shadow-xl bg-neutral">
       <div>
-        <h1>Note Details</h1>
+        <div>
+          <span className="flex justify-end">
+            <GiScrollUnfurled className="text-2xl" />
+          </span>
+          <h1 className="dndfont">Note Details</h1>
+        </div>
         {details && (
-          <div>
-            <h2>{details.first_name}</h2>
+          <div className="p-4 m-2 shadow bg-neutral shadow-slate-800 rounded-xl">
+            <h2 className="dndfont">{details.first_name}</h2>
             <small>{details.created_at}</small>
-            <button onClick={handleDelete}>Delete</button>
+            <div className="flex justify-end">
+              <Link to={`/notes/${id}/update`} className="m-2 btnfont btn btn-info btn-xs" state={details?.body}>
+                Edit
+              </Link>
+            </div>
             <div>
               {details.body.split("\n").map((para, index) => (
-                <p key={`para-index-${index}`}>
+                <p className="notefont" key={`para-index-${index}`}>
                   {para}
                   <br />
                 </p>
@@ -43,11 +53,14 @@ const NoteDetails = (props: NoteDetailsProps) => {
             </div>
           </div>
         )}
-
-        <Link to={"/notes"}>Go Back</Link>
-        <Link to={`/notes/${id}/update`} state={details?.body}>
-          Edit Note
-        </Link>
+        <div className="flex justify-end">
+          <Link to={"/notes"} className="m-2 btnfont btn btn-info">
+            Back
+          </Link>
+          <button onClick={handleDelete} className="m-2 btnfont btn btn-primary">
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   );
