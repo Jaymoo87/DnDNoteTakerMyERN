@@ -18,9 +18,3 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 600;
 }
-
-@layer base {
-  html {
-    font-family: "fantasy", system-ui, sans-serif;
-  }
-}
