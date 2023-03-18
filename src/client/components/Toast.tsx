@@ -18,16 +18,18 @@ const ToastFormat = ({ icon, message }: ToastProps) => {
 
 const success = (message: string) => {
   toast.success(<ToastFormat message={message} icon={<GiDungeonGate className="text-4xl" />} />, {
+    position: "top-center",
     icon: false,
     className: "border-1-8 border-green-500",
     bodyClassName: "text-yellow-700",
     progressClassName: "bg-green-600",
-    style: { background: "#22543d" },
+    style: { background: "#148f20" },
   });
 };
 
 const error = (message: string) => {
   toast.error(<ToastFormat message={message} icon={<GiDragonBreath className="text-4xl" />} />, {
+    position: "top-center",
     icon: false,
     className: "border-1-8 border-green-500",
     bodyClassName: "text-red-700",

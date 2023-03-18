@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../utilities/use-form";
 import notesService from "../services/notes";
+import { Toast } from "../components";
 
 interface AddNoteProps {}
 
@@ -13,8 +14,14 @@ const AddNote = (props: AddNoteProps) => {
     e.preventDefault();
     notesService
       .addNewNote(values)
-      .then((id) => nav(`/notes/${id}`))
-      .catch((e) => console.log(e.message));
+      .then((id) => {
+        Toast.success("Note added, now contemplate on your choices");
+        nav(`/notes/${id}`);
+      })
+      .catch((e) => {
+        Toast.error("This note was not worthy");
+        console.log(e.message);
+      });
   };
 
   return (

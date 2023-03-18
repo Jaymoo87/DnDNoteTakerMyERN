@@ -17,12 +17,12 @@ const Notes = () => {
 
   return (
     <div className="container mx-auto ">
-      <article className="bg-[url(https://r4.wallpaperflare.com/wallpaper/403/627/591/action-adventure-dragons-dungeons-wallpaper-267e8af12d15328e8e24c724d24214d1.jpg)] bg-cover grid p-4 m-3 shadow-lg rounded-2xl shadow-gray-900 justify-self-center justify-items-center bg-ghost">
-        <h1 className="flex justify-center h-10 p-2 font-serif font-bold text-black rounded shadow w-44 bg-[url(../pictures/banner.png)] bg-center bg-contain bg-no-repeat">
+      <article className="bg-[url(https://r4.wallpaperflare.com/wallpaper/403/627/591/action-adventure-dragons-dungeons-wallpaper-267e8af12d15328e8e24c724d24214d1.jpg)] bg-cover grid p-4 m-3 shadow-lg rounded-2xl justify-self-center justify-items-center">
+        <h1 className="flex justify-center h-10 p-2 font-serif font-bold text-black shadow w-44 bg-[url(../pictures/banner.png)] bg-center bg-contain bg-no-repeat">
           Notes
         </h1>
 
-        <span>click scroll to see the whole damn note</span>
+        <span className="font-serif">click scroll to see its contents</span>
         <div className="flex flex-col-reverse justify-center ">
           {notes.map((note) => (
             <div

@@ -4,6 +4,8 @@ import { GiScrollUnfurled } from "react-icons/gi";
 
 import noteService from "../services/notes";
 
+import { Toast } from "../components";
+
 interface NoteDetailsProps {}
 
 const NoteDetails = (props: NoteDetailsProps) => {
@@ -21,8 +23,14 @@ const NoteDetails = (props: NoteDetailsProps) => {
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
     noteService
       .deleteNote(id)
-      .then(() => nav("/notes"))
-      .catch((e) => console.log(e.message));
+      .then(() => {
+        Toast.success("the note has been thrown into the abyss");
+        nav("/notes");
+      })
+      .catch((e) => {
+        Toast.error("a force denies this destruction");
+        console.log(e.message);
+      });
   };
 
   return (
