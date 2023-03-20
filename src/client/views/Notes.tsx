@@ -23,11 +23,14 @@ const Notes = () => {
         {authenticated ? (
           <span className="flex justify-center p-2 mr-5 font-serif">The Realm Welcomes You</span>
         ) : (
-          <span className="flex justify-center p-2 mr-5 font-serif"> You must be accepted into the Realm</span>
+          <span className="flex justify-center p-2 mr-5 font-serif">
+            {" "}
+            You must be accepted into the Realm stranger!!
+          </span>
         )}
       </h1>
       <article className="bg-[url(https://r4.wallpaperflare.com/wallpaper/403/627/591/action-adventure-dragons-dungeons-wallpaper-267e8af12d15328e8e24c724d24214d1.jpg)] bg-cover grid p-4 m-3 shadow-lg rounded-2xl justify-self-center justify-items-center">
-        <h1 className="flex justify-center h-10 p-2 font-serif font-bold text-black shadow w-44 bg-[url(../pictures/banner.png)] bg-center bg-contain bg-no-repeat">
+        <h1 className="flex justify-center h-10 p-2 font-serif font-bold text-black shadow w-44 bg-[url(../../../pictures/banner.png)] bg-center bg-contain bg-no-repeat">
           Notes
         </h1>
 

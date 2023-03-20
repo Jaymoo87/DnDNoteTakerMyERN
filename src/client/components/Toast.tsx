@@ -21,9 +21,9 @@ const success = (message: string) => {
     position: "top-center",
     icon: false,
     className: "border-1-8 border-green-500",
-    bodyClassName: "text-yellow-700",
+    bodyClassName: "text-black-700",
     progressClassName: "bg-green-600",
-    style: { background: "#148f20" },
+    style: { background: "#2f5132" },
   });
 };
 
