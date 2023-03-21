@@ -1,8 +1,18 @@
 module.exports = {
   content: ["./src/client/**/*.{js,ts,jsx,tsx}"],
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  plugins: [require("@tailwindcss/typography"), require("daisyui"), require("@tailwindcss/forms")],
   daisyui: {
-    themes: ["dark"],
+    themes: [
+      {
+        mytheme: {
+          neutral: "#788585",
+          secondary: "#9CAEA9",
+          accent: "#CCDAD1",
+          primary: "#6F6866",
+          warning: "#38302E",
+        },
+      },
+    ],
     fontFamily: {
       serif: ["DM Serif Display"],
     },

@@ -34,41 +34,39 @@ const NoteDetails = (props: NoteDetailsProps) => {
   };
 
   return (
-    <div className="container p-4 mx-auto rounded-lg shadow-xl bg-neutral">
+    <div className="container p-4 mx-auto rounded-lg shadow-xl bg-secondary">
       <div>
-        <div>
-          <span className="flex justify-end">
-            <GiScrollUnfurled className="text-2xl" />
-          </span>
-          <h1 className="dndfont">Note Details</h1>
-        </div>
-        {details && (
-          <div className="p-4 m-2 shadow bg-neutral shadow-slate-800 rounded-xl">
-            <h2 className="dndfont">{details.first_name}</h2>
-            <small>{details.created_at}</small>
-            <div className="flex justify-end">
-              <Link to={`/notes/${id}/update`} className="m-2 btnfont btn btn-info btn-xs" state={details?.body}>
-                Edit
-              </Link>
-            </div>
-            <div>
-              {details.body.split("\n").map((para, index) => (
-                <p className="notefont" key={`para-index-${index}`}>
-                  {para}
-                  <br />
-                </p>
-              ))}
-            </div>
+        <span className="flex justify-end">
+          <GiScrollUnfurled className="text-2xl text-warning" />
+        </span>
+        <h1 className="font-extrabold dndfont text-warning">Note Details</h1>
+      </div>
+      {details && (
+        <div className="p-4 m-2 shadow bg-[url(../../../pictures/greyParchment.jpg)] shadow-slate-800 rounded-xl">
+          <h2 className="dndfont">{details.first_name}</h2>
+          <small>{details.created_at}</small>
+          <div className="flex justify-end">
+            <Link to={`/notes/${id}/update`} className="m-2 btnfont btn btn-neutral btn-xs" state={details?.body}>
+              Edit
+            </Link>
           </div>
-        )}
-        <div className="flex justify-end">
-          <Link to={"/notes"} className="m-2 btnfont btn btn-info">
-            Back
-          </Link>
-          <button onClick={handleDelete} className="m-2 btnfont btn btn-primary">
-            Delete
-          </button>
+          <div>
+            {details.body.split("\n").map((para, index) => (
+              <p className="text-secondary notefont" key={`para-index-${index}`}>
+                {para}
+                <br />
+              </p>
+            ))}
+          </div>
         </div>
+      )}
+      <div className="flex justify-end">
+        <Link to={"/notes"} className="m-2 btnfont btn btn-info">
+          Back
+        </Link>
+        <button onClick={handleDelete} className="m-2 btnfont btn btn-warning">
+          Delete
+        </button>
       </div>
     </div>
   );

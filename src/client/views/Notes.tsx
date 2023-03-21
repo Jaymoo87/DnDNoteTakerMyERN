@@ -19,36 +19,35 @@ const Notes = () => {
 
   return (
     <div className="container mx-auto ">
-      <h1>
+      <h1 className="flex justify-center ">
         {authenticated ? (
-          <span className="flex justify-center p-2 mr-5 font-serif">The Realm Welcomes You</span>
+          <span className="p-3 mt-2 font-serif font-extrabold text-center rounded-lg text-warning bg-opacity-70 bg-slate-500">
+            The Realm Welcomes You <br /> Tap a scroll to see its contents
+          </span>
         ) : (
-          <span className="flex justify-center p-2 mr-5 font-serif">
+          <span className="flex justify-center p-3 font-serif text-warning">
             {" "}
             You must be accepted into the Realm stranger!!
           </span>
         )}
       </h1>
-      <article className="bg-[url(https://r4.wallpaperflare.com/wallpaper/403/627/591/action-adventure-dragons-dungeons-wallpaper-267e8af12d15328e8e24c724d24214d1.jpg)] bg-cover grid p-4 m-3 shadow-lg rounded-2xl justify-self-center justify-items-center">
-        <h1 className="flex justify-center h-10 p-2 font-serif font-bold text-black shadow w-44 bg-[url(../../../pictures/banner.png)] bg-center bg-contain bg-no-repeat">
+      <article className="container grid p-4 m-3 bg-no-repeat shadow-lg rounded-2xl justify-self-center justify-items-center">
+        <h1 className="flex justify-center h-10 p-2 font-serif  font-bold text-primary shadow w-48 bg-[url(../../../pictures/banner.png)] bg-center bg-contain bg-no-repeat">
           Notes
         </h1>
 
-        <span className="font-serif">click scroll to see its contents</span>
         <div className="flex flex-col-reverse justify-center ">
           {notes.map((note) => (
             <div
-              className="h-32 p-4 m-2 border shadow border-accent bg-neutral shadow-slate-800 rounded-xl"
+              className="p-4 m-2 border shadow h-52 border-warning bg-neutral shadow-slate-800 rounded-xl"
               key={`note-key-${note.id}`}
             >
-              <h2 className="pb-3">{note.first_name}'s Note</h2>
+              <h2 className="pb-3 text-warning ">{note.first_name}'s Note</h2>
 
-              <p className="flex justify-center px-5">{note.body.slice(0, 125)} ...</p>
-              <div className="flex justify-end">
-                <Link to={`/notes/${note.id}`}>
-                  <GiTiedScroll className="m-2 mt-2 text-2xl" />
-                </Link>
-              </div>
+              <p className="flex justify-center px-5 notefont text-warning">{note.body.slice(0, 125)} ... </p>
+              <Link to={`/notes/${note.id}`} className="flex justify-end">
+                <GiTiedScroll className="m-2 mt-2 text-2xl text-warning" />
+              </Link>
             </div>
           ))}
         </div>

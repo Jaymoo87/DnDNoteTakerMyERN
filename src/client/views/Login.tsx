@@ -25,11 +25,11 @@ const Login = (props: LoginProps) => {
 
   return (
     <div>
-      <h1 className="m-3 font-serif">Login</h1>
+      <h1 className="m-3 font-serif text-">Login</h1>
       <div>
-        <form className="p-2 artboard bg-info col-2">
+        <form className="grid grid-cols-1 p-2 m-10 border rounded-lg lg:w-1/2 w-100 bg-secondary border-bordercolor">
           <label className="label label-primary">
-            <span className="label-text">Email:</span>
+            <span className="font-serif font-extrabold label-text text-warning ">Email:</span>
           </label>
           <input
             type="email"
@@ -37,19 +37,22 @@ const Login = (props: LoginProps) => {
             value={values.email || ""}
             onChange={handleChanges}
             autoComplete="current-email"
-            className="mb-2 rounded input-sm input-border input-primary"
+            className="block w-full p-3 mt-1 border-gray-300 rounded-md shadow-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           />
           <br />
+          <label className="label label-primary">
+            <span className="font-serif font-extrabold label-text text-warning ">Password:</span>
+          </label>
           <input
             type="password"
             name="password"
             value={values.password || ""}
             onChange={handleChanges}
             autoComplete="current-password"
-            className="mb-2 rounded input-sm input-border input-primary"
+            className="block w-full p-3 mt-1 border-gray-300 rounded-md shadow-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           />
           <br />
-          <button onClick={handleClick} className="font-serif btn btn-secondary">
+          <button onClick={handleClick} className="mx-8 my-4 font-serif shadow-md btn btn-info">
             Login
           </button>
         </form>
