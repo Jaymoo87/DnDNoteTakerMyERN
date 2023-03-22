@@ -21,12 +21,11 @@ const Notes = () => {
     <div className="container mx-auto ">
       <h1 className="flex justify-center ">
         {authenticated ? (
-          <span className="p-3 mt-2 font-serif font-extrabold text-center rounded-lg text-warning bg-opacity-70 bg-slate-500">
+          <span className="p-3 mt-2 font-extrabold text-center rounded-lg text-warning bg-opacity-70 bg-secondary">
             The Realm Welcomes You <br /> Tap a scroll to see its contents
           </span>
         ) : (
           <span className="flex justify-center p-3 font-serif text-warning">
-            {" "}
             You must be accepted into the Realm stranger!!
           </span>
         )}
@@ -39,14 +38,14 @@ const Notes = () => {
         <div className="flex flex-col-reverse justify-center ">
           {notes.map((note) => (
             <div
-              className="p-4 m-2 border shadow h-52 border-warning bg-neutral shadow-slate-800 rounded-xl"
+              className="p-4 m-2 border shadow h-52 border-warning bg-[url(../../../pictures/greyParchment.jpg)] shadow-slate-800 rounded-xl"
               key={`note-key-${note.id}`}
             >
-              <h2 className="pb-3 text-warning ">{note.first_name}'s Note</h2>
+              <h2 className="pb-3 text-secondary namefont ">{note.first_name}'s Note</h2>
 
-              <p className="flex justify-center px-5 notefont text-warning">{note.body.slice(0, 125)} ... </p>
+              <p className="flex justify-center px-5 notefont text-secondary">{note.body.slice(0, 125)} ... </p>
               <Link to={`/notes/${note.id}`} className="flex justify-end">
-                <GiTiedScroll className="m-2 mt-2 text-2xl text-warning" />
+                <GiTiedScroll className="p-1 m-2 mt-2 text-3xl rounded text-secondary btn-ghost" />
               </Link>
             </div>
           ))}

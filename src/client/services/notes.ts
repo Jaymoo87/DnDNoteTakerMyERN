@@ -18,6 +18,15 @@ const getOneNote = async (id: string) => {
   }
 };
 
+const getUserNotes = async (userid: string) => {
+  try {
+    const userNotes = await baseService.get(`/api/notes/mynotes/${userid}`);
+    return userNotes;
+  } catch (error) {
+    throw error;
+  }
+};
+
 const addNewNote = async (payload: { [key: string]: string }) => {
   try {
     const { id } = await baseService.post("/api/notes", payload);
@@ -49,4 +58,5 @@ export default {
   addNewNote,
   deleteNote,
   updateNote,
+  getUserNotes,
 };

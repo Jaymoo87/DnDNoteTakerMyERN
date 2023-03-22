@@ -1,11 +1,12 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 interface SideDrawerProps {
   toggleVisible: () => void;
 }
 
 const SideDrawer = ({ toggleVisible }: SideDrawerProps) => {
+  const { userid } = useParams();
   return (
     <ul className="p-4 overflow-y-auto font-bold menu w-80 text-primary bg-secondary ">
       <li>
@@ -15,7 +16,7 @@ const SideDrawer = ({ toggleVisible }: SideDrawerProps) => {
         <NavLink to="/login">Login</NavLink>
       </li>
       <li>
-        <NavLink to="/private">Private</NavLink>
+        <NavLink to={`/notes/mynotes/${userid}`}>My Notes</NavLink>
       </li>
       <li>
         <NavLink to="/register">Register</NavLink>

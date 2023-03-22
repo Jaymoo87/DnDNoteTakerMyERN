@@ -30,17 +30,17 @@ const AddNote = (props: AddNoteProps) => {
       <div>
         <form className="grid grid-cols-1 p-2 m-10 border rounded-lg lg:w-1/2 w-100 bg-secondary border-bordercolor">
           <label className="label label-primary">
-            <span className="font-serif font-extrabold label-text text-warning ">Write it Down</span>
+            <span className="font-extrabold label-text text-warning ">Write it Down</span>
           </label>
           <textarea
             name="body"
             value={values.body}
             rows={20}
             onChange={handleChanges}
-            className="block w-full p-3 mt-1 border-gray-300 rounded-md shadow-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            className="block w-full p-3 mt-1 bg-[url(../../../pictures/greyParchment.jpg)] text-secondary notefont border-gray-300 rounded-md shadow-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           />
 
-          <button onClick={handleSubmit} type="button" className="mx-8 my-4 font-serif shadow-md btn btn-info">
+          <button onClick={handleSubmit} type="button" className="mx-8 my-4 shadow-md namefont btn btn-info">
             Add Note
           </button>
         </form>

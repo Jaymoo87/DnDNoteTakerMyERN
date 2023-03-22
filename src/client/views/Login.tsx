@@ -29,7 +29,7 @@ const Login = (props: LoginProps) => {
       <div>
         <form className="grid grid-cols-1 p-2 m-10 border rounded-lg lg:w-1/2 w-100 bg-secondary border-bordercolor">
           <label className="label label-primary">
-            <span className="font-serif font-extrabold label-text text-warning ">Email:</span>
+            <span className="font-extrabold label-text text-warning">Email:</span>
           </label>
           <input
             type="email"
@@ -37,11 +37,11 @@ const Login = (props: LoginProps) => {
             value={values.email || ""}
             onChange={handleChanges}
             autoComplete="current-email"
-            className="block w-full p-3 mt-1 border-gray-300 rounded-md shadow-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            className="block w-full p-3 mt-1 font-serif border-gray-300 rounded-md shadow-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           />
           <br />
           <label className="label label-primary">
-            <span className="font-serif font-extrabold label-text text-warning ">Password:</span>
+            <span className="font-extrabold label-text text-warning ">Password:</span>
           </label>
           <input
             type="password"
@@ -49,10 +49,10 @@ const Login = (props: LoginProps) => {
             value={values.password || ""}
             onChange={handleChanges}
             autoComplete="current-password"
-            className="block w-full p-3 mt-1 border-gray-300 rounded-md shadow-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            className="block w-full p-3 mt-1 font-serif border-gray-300 rounded-md shadow-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           />
           <br />
-          <button onClick={handleClick} className="mx-8 my-4 font-serif shadow-md btn btn-info">
+          <button onClick={handleClick} className="mx-8 my-4 shadow-md namefont btn btn-info">
             Login
           </button>
         </form>

@@ -21,7 +21,7 @@ perils that lie ahead. And may this Tome prove a valuable tool in our quest for 
 
 const Home = (props: HomeProps) => {
   return (
-    <div className="grid h-full grid-cols-1 m-1 ">
+    <div className="container grid h-full grid-cols-1 gap-1 m-1 ">
       <div className="flex mx-10 h-2/5 rounded-full justify-center bg-center bg-cover bg-no-repeat bg-[url(../../../pictures/homepage.jpg)]"></div>
       <textarea
         name="body"

@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import { Home, Profile, Login, Register, Notes, NoteDetails, AddNote, UpdateNote } from "../views";
+import { Home, MyNotes, Login, Register, Notes, NoteDetails, AddNote, UpdateNote } from "../views";
 import { Private } from "../components";
 
 interface AppRoutesProps {}
@@ -13,10 +13,10 @@ const AppRoutes = (props: AppRoutesProps) => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route
-        path="/private"
+        path="/notes/mynotes/:userid"
         element={
           <Private>
-            <Profile />
+            <MyNotes />
           </Private>
         }
       />

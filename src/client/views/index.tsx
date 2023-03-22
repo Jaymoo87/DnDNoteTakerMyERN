@@ -3,7 +3,7 @@ export { default as Home } from "./Home";
 //Auth views
 export { default as Register } from "./Register";
 export { default as Login } from "./Login";
-export { default as Profile } from "./Profile";
+export { default as MyNotes } from "./MyNotes";
 
 //Note views
 export { default as Notes } from "./Notes";

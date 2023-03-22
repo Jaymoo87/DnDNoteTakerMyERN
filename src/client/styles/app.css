@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Handlee&family=Trade+Winds&display=swap");
+
+:root {
+  font-family: "Handlee", cursive;
+}
+
 .dndfont {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: large;
@@ -9,9 +15,9 @@
 }
 
 .notefont {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: "Handlee", cursive;
   font-weight: bold;
-  font-style: oblique;
+  color: #54a7ba;
 }
 
 .btnfont {
@@ -23,4 +29,8 @@
   background-image: url(../../../pictures/IceWindBackground.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.namefont {
+  font-family: "Trade Winds", cursive;
 }
