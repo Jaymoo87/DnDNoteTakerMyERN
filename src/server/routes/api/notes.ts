@@ -15,7 +15,18 @@ router.get("/", async (req, res, next) => {
     const results = await db.notes.getAllNotes();
     res.json(results);
   } catch (error) {
-    res.status(500).json({ error: "" });
+    res.status(500).json({ error: "couldnt do it" });
+  }
+});
+
+router.get(`/mynotes/:userid`, async (req, res, next) => {
+  const userid = req.params.userid;
+
+  try {
+    const results = await db.notes.getUserNotes(userid);
+    res.json(results);
+  } catch (error) {
+    next(error);
   }
 });
 

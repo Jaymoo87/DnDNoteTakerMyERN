@@ -25,22 +25,23 @@ const AddNote = (props: AddNoteProps) => {
   };
 
   return (
-    <div className="grid w-auto p-4 m-3 justify-self-center rounded-3xl justify-items-center bg-neutral">
-      <h1 className="flex justify-center h-10 p-2 m-3 font-serif font-bold text-black rounded shadow w-44 bg-secondary">
-        AddNote
-      </h1>
+    <div>
+      <h1 className="m-3 font-serif text-">Login</h1>
       <div>
-        <form className="flex justify-center form-control">
+        <form className="grid grid-cols-1 p-2 m-10 border rounded-lg lg:w-1/2 w-100 bg-secondary border-bordercolor">
+          <label className="label label-primary">
+            <span className="font-serif font-extrabold label-text text-warning ">Write it Down</span>
+          </label>
           <textarea
             name="body"
             value={values.body}
-            rows={10}
-            cols={100}
+            rows={20}
             onChange={handleChanges}
-            className="p-5 border rounded-lg shadow-lg border-primary"
+            className="block w-full p-3 mt-1 border-gray-300 rounded-md shadow-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           />
-          <button type="button" className="flex w-40 m-3 btn btn-success" onClick={handleSubmit}>
-            Jot That Down
+
+          <button onClick={handleSubmit} type="button" className="mx-8 my-4 font-serif shadow-md btn btn-info">
+            Add Note
           </button>
         </form>
       </div>

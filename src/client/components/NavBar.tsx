@@ -9,7 +9,7 @@ const NavBar = ({ toggleVisible }: NavBarProps) => {
   return (
     <div>
       <button onClick={toggleVisible} className="btn btn-square btn-ghost">
-        <SiDungeonsanddragons className="text-3xl md:text-3xl" />
+        <SiDungeonsanddragons className="text-3xl md:text-3xl text-warning" />
       </button>
     </div>
   );

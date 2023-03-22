@@ -21,6 +21,11 @@ const insertNote = (values: NotesTable) => Query("INSERT INTO notes SET ?", [val
 const deleteNote = (id: string, userid: string) => Query("DELETE FROM Notes WHERE id=? AND userid=?", [id, userid]);
 const updateNote = (editedNote: NotesTable, id: string, userid: string) =>
   Query<(NotesTable & UsersTable)[]>("UPDATE Notes SET ? WHERE id=? AND userid=?", [editedNote, id, userid]);
+const getUserNotes = (userid: string) =>
+  Query<(NotesTable & UsersTable)[]>(
+    "SELECT notes.*, users.first_name FROM notes JOIN users ON users.id = notes.userid WHERE userid=?",
+    [userid]
+  );
 
 export default {
   getAllNotes,
@@ -28,4 +33,5 @@ export default {
   insertNote,
   deleteNote,
   updateNote,
+  getUserNotes,
 };

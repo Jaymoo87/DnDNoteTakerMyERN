@@ -7,7 +7,7 @@ interface SideDrawerProps {
 
 const SideDrawer = ({ toggleVisible }: SideDrawerProps) => {
   return (
-    <ul className="p-4 overflow-y-auto menu w-80 bg-base-100 text-base-content">
+    <ul className="p-4 overflow-y-auto font-bold menu w-80 text-primary bg-secondary ">
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
