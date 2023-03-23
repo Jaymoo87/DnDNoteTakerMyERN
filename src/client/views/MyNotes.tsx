@@ -8,16 +8,16 @@ interface MyNotesProps {}
 
 const MyNotes = (props: MyNotesProps) => {
   const nav = useNavigate();
-  const { userid } = useParams();
+  const { id } = useParams();
   const { authenticated, logout } = useAuth();
   const [userNotes, setUserNotes] = useState<{ [key: string]: any }[]>([]);
 
   useEffect(() => {
     notesService
-      .getUserNotes(userid)
+      .getUserNotes(id)
       .then((data) => setUserNotes(data))
       .catch((e) => console.log(e));
-  }, [userid]);
+  }, [id]);
 
   const location = useLocation();
 

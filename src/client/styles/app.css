@@ -34,3 +34,8 @@
 .namefont {
   font-family: "Trade Winds", cursive;
 }
+
+textarea,
+.homeintro {
+  user-select: none;
+}
