@@ -20,6 +20,7 @@ router.get("/", async (req, res, next) => {
 });
 
 router.get(`/mynotes/:userid`, async (req, res, next) => {
+  // const user_id = req.query.userid as string | undefined;
   const userid = req.params.userid;
 
   try {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 
 import { Home, MyNotes, Login, Register, Notes, NoteDetails, AddNote, UpdateNote } from "../views";
 import { Private } from "../components";
@@ -7,6 +7,7 @@ import { Private } from "../components";
 interface AppRoutesProps {}
 
 const AppRoutes = (props: AppRoutesProps) => {
+  const { userid } = useParams();
   return (
     <Routes>
       <Route path="/" element={<Home />} />

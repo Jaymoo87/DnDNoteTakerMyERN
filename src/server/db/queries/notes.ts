@@ -23,7 +23,7 @@ const updateNote = (editedNote: NotesTable, id: string, userid: string) =>
   Query<(NotesTable & UsersTable)[]>("UPDATE Notes SET ? WHERE id=? AND userid=?", [editedNote, id, userid]);
 const getUserNotes = (userid: string) =>
   Query<(NotesTable & UsersTable)[]>(
-    "SELECT notes.*, users.first_name FROM notes JOIN users ON users.id = notes.userid WHERE userid=?",
+    "SELECT notes.*, users.first_name FROM notes JOIN users ON users.id = notes.userid WHERE notes.userid=?",
     [userid]
   );
 

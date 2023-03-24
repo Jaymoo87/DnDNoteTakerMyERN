@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useParams } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
 
@@ -8,6 +8,7 @@ import AppRoutes from "./AppRoutes";
 
 const App = () => {
   const [visible, setVisible] = useState<boolean>(false);
+  const { userid } = useParams();
 
   const toggleVisible = () => setVisible((p) => !p);
 

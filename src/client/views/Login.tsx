@@ -19,7 +19,7 @@ const Login = (props: LoginProps) => {
 
     authService
       .loginUser(values)
-      .then(() => signin("/private"))
+      .then(() => signin("/notes"))
       .catch((e) => setError(e.message));
   };
 

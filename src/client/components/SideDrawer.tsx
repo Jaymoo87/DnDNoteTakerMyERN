@@ -7,6 +7,7 @@ interface SideDrawerProps {
 
 const SideDrawer = ({ toggleVisible }: SideDrawerProps) => {
   const { userid } = useParams();
+  console.log(userid);
   return (
     <ul className="p-4 overflow-y-auto font-bold menu w-80 text-primary bg-secondary ">
       <li>

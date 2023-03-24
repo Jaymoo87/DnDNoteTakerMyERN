@@ -6,18 +6,19 @@ import { GiScrollUnfurled, GiTiedScroll } from "react-icons/gi";
 
 interface MyNotesProps {}
 
-const MyNotes = (props: MyNotesProps) => {
+const MyNotes = () => {
   const nav = useNavigate();
-  const { id } = useParams();
+  const { userid } = useParams();
   const { authenticated, logout } = useAuth();
   const [userNotes, setUserNotes] = useState<{ [key: string]: any }[]>([]);
 
   useEffect(() => {
     notesService
-      .getUserNotes(id)
+      .getUserNotes(userid)
+
       .then((data) => setUserNotes(data))
       .catch((e) => console.log(e));
-  }, [id]);
+  }, [userid]);
 
   const location = useLocation();
 
@@ -35,19 +36,21 @@ const MyNotes = (props: MyNotesProps) => {
       </div>
       <button onClick={() => logout()}>Logout</button>
 
-      {userNotes.map((note) => (
+      {userNotes.map(({ notes }) => (
         <div
           className="p-4 m-2 border shadow h-52 border-warning bg-neutral shadow-slate-800 rounded-xl"
-          key={`note-key-${note.id}`}
+          key={`note-key-${notes.id}`}
         >
-          <h2 className="pb-3 text-warning ">{note.first_name}'s Note</h2>
+          <h2 className="pb-3 text-warning ">{notes.first_name}'s Note</h2>
 
-          <p className="flex justify-center px-5 notefont text-warning">{note.body.slice(0, 125)} ... </p>
-          <Link to={`/notes/${note.id}`} className="flex justify-end">
+          <p className="flex justify-center px-5 notefont text-warning">{notes.body.slice(0, 125)} ... </p>
+          <Link to={`/notes/${notes.id}`} className="flex justify-end">
             <GiTiedScroll className="m-2 mt-2 text-2xl text-warning" />
           </Link>
         </div>
       ))}
+
+      {userNotes.length === 0 && <div>No notes found.</div>}
     </div>
   );
 };
