@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import notesService from "../services/notes";
 import { GiTiedScroll } from "react-icons/gi";
 import { useAuth } from "../utilities/use-auth";

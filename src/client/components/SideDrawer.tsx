@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
+import notesService from "../services/notes";
 
 interface SideDrawerProps {
   toggleVisible: () => void;
@@ -7,6 +8,7 @@ interface SideDrawerProps {
 
 const SideDrawer = ({ toggleVisible }: SideDrawerProps) => {
   const { userid } = useParams();
+
   console.log(userid);
   return (
     <ul className="p-4 overflow-y-auto font-bold menu w-80 text-primary bg-secondary ">

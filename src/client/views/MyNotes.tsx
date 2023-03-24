@@ -10,12 +10,11 @@ const MyNotes = () => {
   const nav = useNavigate();
   const { userid } = useParams();
   const { authenticated, logout } = useAuth();
-  const [userNotes, setUserNotes] = useState<{ [key: string]: any }[]>([]);
+  const [userNotes, setUserNotes] = useState<{ [key: string]: any }[]>(null);
 
   useEffect(() => {
     notesService
       .getUserNotes(userid)
-
       .then((data) => setUserNotes(data))
       .catch((e) => console.log(e));
   }, [userid]);
@@ -36,7 +35,7 @@ const MyNotes = () => {
       </div>
       <button onClick={() => logout()}>Logout</button>
 
-      {userNotes.map(({ notes }) => (
+      {userNotes?.map(({ notes }) => (
         <div
           className="p-4 m-2 border shadow h-52 border-warning bg-neutral shadow-slate-800 rounded-xl"
           key={`note-key-${notes.id}`}
@@ -50,7 +49,7 @@ const MyNotes = () => {
         </div>
       ))}
 
-      {userNotes.length === 0 && <div>No notes found.</div>}
+      {userNotes?.length === 0 && <div>No notes found.</div>}
     </div>
   );
 };
