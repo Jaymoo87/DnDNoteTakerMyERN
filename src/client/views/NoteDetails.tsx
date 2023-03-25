@@ -52,7 +52,7 @@ const NoteDetails = (props: NoteDetailsProps) => {
           </div>
           <div>
             {details.body.split("\n").map((para, index) => (
-              <p className="text-secondary notefont" key={`para-index-${index}`}>
+              <p className=" notefont" key={`para-index-${index}`}>
                 {para}
                 <br />
               </p>

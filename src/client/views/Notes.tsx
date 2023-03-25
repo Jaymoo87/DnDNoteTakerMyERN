@@ -30,7 +30,7 @@ const Notes = () => {
           </span>
         )}
       </h1>
-      <article className="container grid p-4 m-3 bg-no-repeat shadow-lg rounded-2xl justify-self-center justify-items-center">
+      <div className="container grid p-4 m-3 bg-no-repeat shadow-lg rounded-2xl justify-self-center justify-items-center">
         <h1 className="flex justify-center h-10 p-2 font-serif  font-bold text-primary shadow w-48 bg-[url(../../../pictures/banner.png)] bg-center bg-contain bg-no-repeat">
           Notes
         </h1>
@@ -38,19 +38,20 @@ const Notes = () => {
         <div className="flex flex-col-reverse justify-center ">
           {notes.map((note) => (
             <div
-              className="p-4 m-2 border shadow h-52 border-warning bg-[url(../../../pictures/greyParchment.jpg)] shadow-slate-800 rounded-xl"
+              className="p-4 m-2 border shadow h-56 border-warning bg-[url(../../../pictures/greyParchment.jpg)] shadow-slate-800 rounded-xl"
               key={`note-key-${note.id}`}
             >
-              <h2 className="pb-3 text-secondary namefont ">{note.first_name}'s Note</h2>
+              <h2 className="pb-3 text-secondary namefont">{note.first_name}'s Note</h2>
 
-              <p className="flex justify-center px-5 notefont text-secondary">{note.body.slice(0, 125)} ... </p>
+              <p className="flex justify-center px-5 notefont text-secondary">{note.body.slice(0, 100)} ... </p>
               <Link to={`/notes/${note.id}`} className="flex justify-end">
                 <GiTiedScroll className="p-1 m-2 mt-2 text-3xl rounded text-secondary btn-ghost" />
               </Link>
+              <Link to={`/notes/mynotes/${note.userid}`}> All of {note.first_name}'s Notes</Link>
             </div>
           ))}
         </div>
-      </article>
+      </div>
     </div>
   );
 };

@@ -31,20 +31,20 @@ const MyNotes = () => {
         <span className="flex justify-end">
           <GiScrollUnfurled className="text-2xl text-warning" />
         </span>
-        <h1 className="font-extrabold dndfont text-warning">Note Details</h1>
+        <h1 className="font-extrabold dndfont text-warning">My Notes</h1>
       </div>
       <button onClick={() => logout()}>Logout</button>
 
-      {userNotes?.map(({ notes }) => (
+      {userNotes?.map((notes) => (
         <div
-          className="p-4 m-2 border shadow h-52 border-warning bg-neutral shadow-slate-800 rounded-xl"
+          className="p-4 m-2 border shadow h-52 border-warning bg-[url(../../../pictures/greyParchment.jpg)] shadow-slate-800 rounded-xl"
           key={`note-key-${notes.id}`}
         >
-          <h2 className="pb-3 text-warning ">{notes.first_name}'s Note</h2>
+          <h2 className="pb-3 text-secondary namefont">{notes.first_name}'s Note</h2>
 
           <p className="flex justify-center px-5 notefont text-warning">{notes.body.slice(0, 125)} ... </p>
           <Link to={`/notes/${notes.id}`} className="flex justify-end">
-            <GiTiedScroll className="m-2 mt-2 text-2xl text-warning" />
+            <GiTiedScroll className="m-2 mt-2 text-2xl text-secondary" />
           </Link>
         </div>
       ))}
