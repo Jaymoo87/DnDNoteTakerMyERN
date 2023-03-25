@@ -31,18 +31,24 @@ const UpdateNote = (props: UpdateNoteProps) => {
 
   return (
     <div>
+      <h1 className="m-3 font-serif text-">Login</h1>
       <div>
-        <span>
-          <GiScrollQuill className="text-2xl" />
-        </span>
-        <h1>Update Note</h1>
-      </div>
-      <div>
-        <form>
-          <textarea name="body" value={values.body} rows={10} cols={100} onChange={handleChanges}></textarea>
-          <button type="button" className="btn" onClick={handleUpdate}>
-            Update Note
-          </button>
+        <form className="grid grid-cols-1 p-2 m-10 border rounded-lg lg:w-1/2 w-100 bg-secondary border-bordercolor">
+          <label className="label label-primary">
+            <span className="font-extrabold label-text text-warning ">Write it Down, Again</span>
+          </label>
+          <textarea
+            name="body"
+            value={values.body}
+            rows={20}
+            onChange={handleChanges}
+            className="block w-full p-3 mt-1 bg-[url(../../../pictures/greyParchment.jpg)] text-secondary notefont border-gray-300 rounded-md shadow-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          />
+          <div className="flex justify-center p-3">
+            <button type="button" className="w-1/3 btnfont btn" onClick={handleUpdate}>
+              Update Note
+            </button>
+          </div>
         </form>
       </div>
     </div>
@@ -50,3 +56,5 @@ const UpdateNote = (props: UpdateNoteProps) => {
 };
 
 export default UpdateNote;
+
+<GiScrollQuill className="text-2xl" />;
