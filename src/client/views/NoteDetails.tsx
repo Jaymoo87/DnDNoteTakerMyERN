@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { GiScrollUnfurled } from "react-icons/gi";
+import dayjs from "dayjs";
+import moment from "moment";
 
 import noteService from "../services/notes";
 
@@ -9,6 +11,7 @@ import { Toast } from "../components";
 interface NoteDetailsProps {}
 
 const NoteDetails = (props: NoteDetailsProps) => {
+  dayjs();
   const nav = useNavigate();
   const { id } = useParams();
   const [details, setDetails] = useState<{ [key: string]: any }>(null);
