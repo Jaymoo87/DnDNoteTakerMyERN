@@ -1,4 +1,5 @@
 import type { UsersTable } from "../db/queries/user";
+import pg, { QueryResult } from "pg";
 
 declare global {
   namespace Express {
@@ -7,4 +8,8 @@ declare global {
       payload?: { id: string };
     }
   }
+}
+
+export interface pg_results extends QueryResult {
+  insertId?: number;
 }

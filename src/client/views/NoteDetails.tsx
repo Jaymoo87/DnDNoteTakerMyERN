@@ -11,7 +11,6 @@ import { Toast } from "../components";
 interface NoteDetailsProps {}
 
 const NoteDetails = (props: NoteDetailsProps) => {
-  dayjs();
   const nav = useNavigate();
   const { id } = useParams();
   const [details, setDetails] = useState<{ [key: string]: any }>(null);
@@ -47,7 +46,7 @@ const NoteDetails = (props: NoteDetailsProps) => {
       {details && (
         <div className="p-4 m-2 shadow bg-[url(../../../pictures/greyParchment.jpg)] shadow-slate-800 rounded-xl">
           <h2 className="dndfont">{details.first_name}</h2>
-          <small>{details.created_at}</small>
+          <small>{dayjs(details.created_at).format("MM-DD-YYYY")}</small>
           <div className="flex justify-end">
             <Link to={`/notes/${id}/update`} className="m-2 btnfont btn btn-neutral btn-xs" state={details?.body}>
               Edit
