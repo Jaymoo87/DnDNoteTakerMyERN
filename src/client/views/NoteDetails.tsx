@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { GiScrollUnfurled } from "react-icons/gi";
 import dayjs from "dayjs";
 import moment from "moment";
+import { UserNoteTable } from "../../types";
 
 import noteService from "../services/notes";
 
@@ -13,7 +14,7 @@ interface NoteDetailsProps {}
 const NoteDetails = (props: NoteDetailsProps) => {
   const nav = useNavigate();
   const { id } = useParams();
-  const [details, setDetails] = useState<{ [key: string]: any }>(null);
+  const [details, setDetails] = useState<UserNoteTable>(null);
 
   useEffect(() => {
     noteService
@@ -36,7 +37,7 @@ const NoteDetails = (props: NoteDetailsProps) => {
   };
 
   return (
-    <div className="container p-4 mx-auto rounded-lg shadow-xl bg-secondary">
+    <div className="container w-11/12 p-4 m-3 mx-auto bg-opacity-50 rounded-lg shadow-xl md:w-5/6 lg:w-1/3 bg-secondary">
       <div>
         <span className="flex justify-end">
           <GiScrollUnfurled className="text-2xl text-warning" />
@@ -45,7 +46,7 @@ const NoteDetails = (props: NoteDetailsProps) => {
       </div>
       {details && (
         <div className="p-4 m-2 shadow bg-[url(../../../pictures/greyParchment.jpg)] shadow-slate-800 rounded-xl">
-          <h2 className="dndfont">{details.first_name}</h2>
+          <h2 className="dndfont">{details.first_name}'s Note</h2>
           <small>{dayjs(details.created_at).format("MM-DD-YYYY")}</small>
           <div className="flex justify-end">
             <Link to={`/notes/${id}/update`} className="m-2 btnfont btn btn-neutral btn-xs" state={details?.body}>

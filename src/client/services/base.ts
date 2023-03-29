@@ -18,7 +18,7 @@ const json = async (url: string, method: string, body?: { [key: string]: string 
     body: JSON.stringify(body),
   };
 
-  if (method === "GET") {
+  if (method !== "POST" && method !== "PUT") {
     delete headers["Content-Type"];
     delete data.body;
   }

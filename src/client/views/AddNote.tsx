@@ -28,7 +28,7 @@ const AddNote = (props: AddNoteProps) => {
     <div>
       <h1 className="m-3 font-serif text-">Login</h1>
       <div>
-        <form className="grid grid-cols-1 p-2 m-10 border rounded-lg lg:w-1/2 w-100 bg-secondary border-bordercolor">
+        <form className="grid grid-cols-1 p-4 m-10 bg-opacity-50 border border-gray-300 rounded-lg lg:w-1/2 w-100 bg-secondary">
           <label className="label label-primary">
             <span className="font-extrabold label-text text-warning ">Write it Down</span>
           </label>
@@ -37,7 +37,7 @@ const AddNote = (props: AddNoteProps) => {
             value={values.body}
             rows={20}
             onChange={handleChanges}
-            className="block w-full p-3 mt-1 bg-[url(../../../pictures/greyParchment.jpg)] text-secondary notefont border-gray-300 rounded-md shadow-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            className="block w-full p-3 my-3 bg-[url(../../../pictures/greyParchment.jpg)] text-secondary notefont border-gray-700 rounded-md shadow-md focus:border-gray-700 focus:ring focus:ring-gray-600 focus:ring-opacity-70"
           />
 
           <button onClick={handleSubmit} type="button" className="mx-8 my-4 shadow-md namefont btn btn-info">

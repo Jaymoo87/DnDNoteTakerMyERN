@@ -1,29 +1,28 @@
-import { Query } from "../pool";
-import type { UsersTable } from "./user";
-
-export interface NotesTable {
-  id?: string;
-  userid?: string;
-  body?: string;
-  created_at?: string;
-}
+import { pgQuery } from "../pool";
+import type { UsersTable } from "../../../types";
+import { NotesTable } from "../../../types";
 
 const getAllNotes = () =>
-  Query<(NotesTable & UsersTable)[]>(
-    "SELECT notes.*, users.first_name FROM notes JOIN users ON users.id = notes.userid ;"
+  pgQuery<(NotesTable & UsersTable)[]>(
+    "SELECT notes.*, users.first_name FROM notes JOIN users ON users.id = notes.userid"
   );
 const getOneNote = (id: string) =>
-  Query<(NotesTable & UsersTable)[]>(
-    "SELECT notes.*, users.first_name FROM notes JOIN users ON users.id = notes.userid WHERE notes.id=?",
+  pgQuery<(NotesTable & UsersTable)[]>(
+    "SELECT notes.*, users.first_name FROM notes JOIN users ON users.id = notes.userid WHERE notes.id=$1;",
     [id]
   );
-const insertNote = (values: NotesTable) => Query("INSERT INTO notes SET ?", [values]);
-const deleteNote = (id: string, userid: string) => Query("DELETE FROM Notes WHERE id=? AND userid=?", [id, userid]);
-const updateNote = (editedNote: NotesTable, id: string, userid: string) =>
-  Query<(NotesTable & UsersTable)[]>("UPDATE Notes SET ? WHERE id=? AND userid=?", [editedNote, id, userid]);
+const insertNote = (id: string, userid: string, body: string) =>
+  pgQuery("INSERT INTO notes SET id=$1, userid=$2, body=$3;", [id, userid, body]);
+
+const deleteNote = (id: string, userid: string) =>
+  pgQuery("DELETE FROM Notes WHERE id=$1 AND userid=$2;", [id, userid]);
+
+const updateNote = (body: string, id: string, userid: string) =>
+  pgQuery<(NotesTable & UsersTable)[]>("UPDATE Notes SET body=$1 WHERE id=$2 AND userid=$3;", [body, id, userid]);
+
 const getUserNotes = (userid: string) =>
-  Query<(NotesTable & UsersTable)[]>(
-    "SELECT notes.*, users.first_name FROM notes JOIN users ON users.id = notes.userid WHERE notes.userid=?",
+  pgQuery<(NotesTable & UsersTable)[]>(
+    "SELECT notes.*, users.first_name FROM notes JOIN users ON users.id = notes.userid WHERE notes.userid=$1;",
     [userid]
   );
 

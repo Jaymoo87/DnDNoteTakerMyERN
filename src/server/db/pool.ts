@@ -1,7 +1,7 @@
 import mysql from "mysql";
 import config from "../config";
-import pg from "pg";
-import { pg_results } from "../types";
+import pg, { QueryResult } from "pg";
+import { Pg_Results } from "../../types";
 
 const pool = mysql.createPool(config.db);
 
@@ -17,26 +17,23 @@ export const Query = <T = mysql.OkPacket>(sql: string, values?: any) => {
   });
 };
 
-const pgPool = new pg.Pool({
-  user: "noteadmin",
-  password: "password",
-  database: "dndnotes",
-  host: "localhost",
-});
+const pgPool = new pg.Pool(config.pgdb);
 
-const pgQuery = (sql: string, values: unknown[] = []) => {
-  return new Promise((resolve, reject) => {
+export const pgQuery = <T = Pg_Results>(sql: string, values: unknown[] = []) => {
+  return new Promise<T>((resolve, reject) => {
     pgPool.query(sql, values, (err, results) => {
       if (err) {
         reject(err);
       } else {
         if (results.command === "SELECT") {
-          resolve(results.rows);
+          resolve(results.rows as T);
         } else if (results.command === "INSERT") {
           const id: number = results.rows[0].id;
-          const insertData: pg_results = { ...results, insertId: id };
+          const insertData = { ...results, insertId: id };
+          //@ts-ignore
           resolve(insertData);
         } else {
+          //@ts-ignore
           resolve(results);
         }
       }
@@ -44,10 +41,3 @@ const pgQuery = (sql: string, values: unknown[] = []) => {
     });
   });
 };
-
-// pool.query("SELECT 1 + 1;", (err, results) => {
-//   if (err) {
-//     console.log("error", err.message);
-//   }
-//   console.log(results);
-// });

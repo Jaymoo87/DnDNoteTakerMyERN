@@ -15,6 +15,7 @@ router.get("/", async (req, res, next) => {
     const results = await db.notes.getAllNotes();
     res.json(results);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: "couldnt do it" });
   }
 });
@@ -25,6 +26,7 @@ router.get(`/mynotes/:userid`, async (req, res, next) => {
 
   try {
     const results = await db.notes.getUserNotes(userid);
+
     res.json(results);
   } catch (error) {
     next(error);
@@ -38,7 +40,7 @@ router.post("/", async (req, res, next) => {
       userid: req.payload.id,
       ...req.body,
     };
-    await db.notes.insertNote(noteDTO);
+    await db.notes.insertNote(noteDTO["id"], noteDTO["userid"], noteDTO["body"]);
 
     res.json({ id: noteDTO.id, message: "new note created" });
   } catch (error) {
@@ -62,7 +64,7 @@ router.put("/:id", async (req, res, next) => {
     const noteDTO = {
       ...req.body,
     };
-    await db.notes.updateNote(noteDTO, id, userid);
+    await db.notes.updateNote(noteDTO.body, id, userid);
     res.json({ id, message: "note updated" });
   } catch (error) {
     next(error);
@@ -75,7 +77,7 @@ router.delete("/:id", async (req, res, next) => {
     const userid = req.payload.id;
     const result = await db.notes.deleteNote(id, userid);
 
-    if (result.affectedRows) {
+    if (result.rowCount) {
       res.json({ id, message: "note deleted" });
     } else {
       res.json("TF?!?? shit aint even there");

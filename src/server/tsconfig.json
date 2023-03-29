@@ -1,6 +1,7 @@
 {
     "extends": "../../tsconfig.json",
     "compilerOptions": {
+        "noStrictGenericChecks": true,
         "outDir": "./dist",
         "module": "commonjs",
         "target": "ES5",
@@ -10,5 +11,5 @@
         "types": ["node", "express"],
         "typeRoots": ["./src/server/types"]
     },
-    "include": ["."]
+    "include": [".", "../types"]
 }

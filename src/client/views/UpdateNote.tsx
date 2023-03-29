@@ -10,13 +10,14 @@ const UpdateNote = (props: UpdateNoteProps) => {
   const { id } = useParams();
   const nav = useNavigate();
   const { state } = useLocation();
-  const { values, handleChanges, setValues } = useForm<{ body: string }>((state && { body: state }) || { body: "" });
+
+  const { values, handleChanges, setValues } = useForm<{ body: string }>({ body: state || "" });
 
   useEffect(() => {
     if (!state) {
       notesService
         .getOneNote(id)
-        .then((data) => setValues({ body: data.body }))
+        .then((data) => setValues(data))
         .catch((e) => console.log(e.message));
     }
   }, [id]);

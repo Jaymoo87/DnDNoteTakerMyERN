@@ -3,6 +3,7 @@ import { createJWT } from "../../utils/token";
 import db from "../../db";
 import bcrypt from "bcrypt";
 import { v4 as uuidv4 } from "uuid";
+import user from "../../db/queries/user";
 
 const registerRouter = Router();
 
@@ -15,7 +16,7 @@ registerRouter.post("/", async (req, res, next) => {
       error["status"] = 400;
       throw error;
     }
-    const [emailFound] = await db.user.find("email", email);
+    const [emailFound] = await db.user.find(email);
     if (emailFound) {
       const error = new Error("email already exists");
       error["status"] = 400;
@@ -31,7 +32,13 @@ registerRouter.post("/", async (req, res, next) => {
 
     userDTO.password = hash;
 
-    const result = await db.user.insert(userDTO);
+    const result = await db.user.insert(
+      userDTO.id,
+      userDTO.email,
+      userDTO.password,
+      userDTO.first_name,
+      userDTO.last_name
+    );
     delete userDTO.password;
 
     const token = createJWT(userDTO.id);

@@ -3,11 +3,12 @@ import { Link, useParams } from "react-router-dom";
 import notesService from "../services/notes";
 import { GiTiedScroll } from "react-icons/gi";
 import { useAuth } from "../utilities/use-auth";
+import { UserNoteTable } from "../../types";
 
 interface NotesProps {}
 
 const Notes = () => {
-  const [notes, setNotes] = useState<{ [key: string]: any }[]>([]);
+  const [notes, setNotes] = useState<UserNoteTable[]>([]);
   const { authenticated } = useAuth();
 
   useEffect(() => {
@@ -30,12 +31,12 @@ const Notes = () => {
           </span>
         )}
       </h1>
-      <div className="container grid p-4 m-3 bg-no-repeat shadow-lg rounded-2xl justify-self-center justify-items-center">
-        <h1 className="flex justify-center h-10 p-2 font-serif  font-bold text-primary shadow w-48 bg-[url(../../../pictures/banner.png)] bg-center bg-contain bg-no-repeat">
+      <div className="container grid grid-cols-1 p-4 m-3 bg-no-repeat shadow-lg rounded-2xl justify-self-center justify-items-center">
+        <h1 className="flex justify-center h-10 p-2 font-serif font-bold text-primary shadow w-48 bg-[url(../../../pictures/banner.png)] bg-center bg-contain bg-no-repeat">
           Notes
         </h1>
 
-        <div className="flex flex-col-reverse justify-center ">
+        <div className="flex flex-col-reverse justify-center w-9/10 ">
           {notes.map((note) => (
             <div
               className="p-4 m-2 border shadow h-56 border-warning bg-[url(../../../pictures/greyParchment.jpg)] shadow-slate-800 rounded-xl"
