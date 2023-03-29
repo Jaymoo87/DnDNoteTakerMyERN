@@ -1,6 +1,7 @@
 import { UsersTable } from "../../../types";
 import { pgQuery } from "../pool";
 
+//Queries for PostGress
 const find = (email: string) => pgQuery<UsersTable[]>(`SELECT * FROM Users WHERE email=$1`, [email]);
 
 const insert = (id: string, email: string, password: string, first_name: string, last_name: string) =>

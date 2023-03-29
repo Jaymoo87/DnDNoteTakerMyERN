@@ -57,6 +57,8 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+//CRUD routes response needs the noteDTO object to be broken down for PostGres
+
 router.put("/:id", async (req, res, next) => {
   try {
     const id = req.params.id;

@@ -2,6 +2,7 @@ import { pgQuery } from "../pool";
 import type { UsersTable } from "../../../types";
 import { NotesTable } from "../../../types";
 
+// Queries for PostGres
 const getAllNotes = () =>
   pgQuery<(NotesTable & UsersTable)[]>(
     "SELECT notes.*, users.first_name FROM notes JOIN users ON users.id = notes.userid"

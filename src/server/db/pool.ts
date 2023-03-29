@@ -3,8 +3,9 @@ import config from "../config";
 import pg, { QueryResult } from "pg";
 import { Pg_Results } from "../../types";
 
+//MySql pool connection
 const pool = mysql.createPool(config.db);
-
+//returns generic Type or the OkPacket response from MySql
 export const Query = <T = mysql.OkPacket>(sql: string, values?: any) => {
   return new Promise<T>((resolve, reject) => {
     const formatted = mysql.format(sql, values);
@@ -17,6 +18,7 @@ export const Query = <T = mysql.OkPacket>(sql: string, values?: any) => {
   });
 };
 
+//PostGres connection pool
 const pgPool = new pg.Pool(config.pgdb);
 
 export const pgQuery = <T = Pg_Results>(sql: string, values: unknown[] = []) => {
