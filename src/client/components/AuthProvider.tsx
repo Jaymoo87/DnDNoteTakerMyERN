@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import authService from "../services/auth";
+import LoaderCard from "./LoaderCard";
 
 export const AuthContext = createContext<
   [
@@ -41,7 +42,7 @@ const AuthProvider = (props: AuthProviderProps) => {
       });
   }, []);
 
-  if (authState.checking) return <h1>Loading...</h1>;
+  if (authState.checking) return <LoaderCard length={3} />;
 
   return <AuthContext.Provider value={[authState, setAuthState]}>{props.children}</AuthContext.Provider>;
 };

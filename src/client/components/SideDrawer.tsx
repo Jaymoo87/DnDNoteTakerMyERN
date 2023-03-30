@@ -21,7 +21,9 @@ const SideDrawer = ({ toggleVisible }: SideDrawerProps) => {
         <NavLink to="/register">Register</NavLink>
       </li>
       <li>
-        <NavLink to="/notes">Notes</NavLink>
+        <NavLink to="/notes" end>
+          Notes
+        </NavLink>
       </li>
       <li>
         <NavLink to="/notes/new">AddNote</NavLink>
