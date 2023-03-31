@@ -29,7 +29,7 @@ const Home = (props: HomeProps) => {
         name="body"
         readOnly
         value={intro}
-        className=" resize-none overflow-hidden  notefont text-accent text-center w-full mb-5 m-1 p-3 mx-auto rounded-md shadow-md bg-[url(../../../pictures/greyParchment.jpg)] "
+        className="resize-none overflow-hidden  notefont text-accent text-center w-full mb-5 m-1 p-3 mx-auto rounded-md shadow-md bg-[url(../../../pictures/greyParchment.jpg)] "
       ></textarea>
     </div>
   );
