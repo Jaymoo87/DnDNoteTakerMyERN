@@ -4,3 +4,4 @@ export { default as Private } from "./Private";
 export { default as Drawer } from "./Drawer";
 export { default as SideDrawer } from "./SideDrawer";
 export { default as Toast } from "./Toast";
+export { default as Container } from "./Container";
