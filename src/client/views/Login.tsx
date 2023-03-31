@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import authService from "../services/auth";
 import { useForm } from "../utilities/use-form";
 import { useAuth } from "../utilities/use-auth";
+import Input from "../components/Input";
 
 interface LoginProps {}
 
@@ -28,14 +29,14 @@ const Login = (props: LoginProps) => {
       <h1>Login</h1>
       <div>
         <form>
-          <input
+          <Input
             type="email"
             name="email"
             value={values.email || ""}
             onChange={handleChanges}
             autoComplete="current-email"
           />
-          <input
+          <Input
             type="password"
             name="password"
             value={values.password || ""}
