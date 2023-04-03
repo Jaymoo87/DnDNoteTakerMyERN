@@ -13,7 +13,7 @@ const getOneNote = (id: string) =>
     [id]
   );
 const insertNote = (id: string, userid: string, body: string) =>
-  pgQuery("INSERT INTO notes SET id=$1, userid=$2, body=$3;", [id, userid, body]);
+  pgQuery("INSERT INTO notes (id, userid, body) VALUES ($1, $2, $3) RETURNING id", [id, userid, body]);
 
 const deleteNote = (id: string, userid: string) =>
   pgQuery("DELETE FROM Notes WHERE id=$1 AND userid=$2;", [id, userid]);

@@ -30,7 +30,7 @@ export const pgQuery = <T = Pg_Results>(sql: string, values: unknown[] = []) => 
         if (results.command === "SELECT") {
           resolve(results.rows as T);
         } else if (results.command === "INSERT") {
-          const id: number = results.rows[0].id;
+          const id: string = results.rows[0].id;
           const insertData = { ...results, insertId: id };
           //@ts-ignore
           resolve(insertData);

@@ -1,4 +1,5 @@
 import React from "react";
+import { Container } from "../components";
 
 interface HomeProps {}
 
@@ -21,17 +22,19 @@ perils that lie ahead. And may this Tome prove a valuable tool in our quest for 
 
 const Home = (props: HomeProps) => {
   return (
-    <div className="container grid h-full grid-cols-1 gap-1 m-1 ">
-      <div className="flex mx-10 rounded-full p-10 justify-center bg-center bg-cover bg-no-repeat bg-[url(../../../pictures/homepage.jpg)]"></div>
-      <textarea
-        rows={25}
-        disabled
-        name="body"
-        readOnly
-        value={intro}
-        className="resize-none overflow-hidden  notefont text-accent text-center w-full mb-5 m-1 p-3 mx-auto rounded-md shadow-md bg-[url(../../../pictures/greyParchment.jpg)] "
-      ></textarea>
-    </div>
+    <Container>
+      <div className="flex flex-col items-center m-1 ">
+        <div className="flex mx-5 h-32 w-64 rounded-full p-10 justify-center bg-center bg-cover bg-no-repeat bg-[url(../../../pictures/homepage.jpg)]" />
+        <textarea
+          rows={30}
+          disabled
+          name="body"
+          readOnly
+          value={intro}
+          className="resize-none overflow-hidden notefont text-accent text-center w-full mb-5 m-1 p-3 mx-auto rounded-md shadow-md bg-[url(../../../pictures/greyParchment.jpg)] "
+        ></textarea>
+      </div>
+    </Container>
   );
 };
 

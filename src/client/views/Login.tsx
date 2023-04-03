@@ -4,6 +4,8 @@ import { useLocation } from "react-router-dom";
 import authService from "../services/auth";
 import { useForm } from "../utilities/use-form";
 import { useAuth } from "../utilities/use-auth";
+import { Container, Toast } from "../components";
+import Input from "../components/Input";
 
 interface LoginProps {}
 
@@ -20,46 +22,46 @@ const Login = (props: LoginProps) => {
     authService
       .loginUser(values)
       .then(() => signin("/notes"))
-      .catch((e) => setError(e.message));
+      .catch((e) => Toast.error(e.message));
   };
 
   return (
-    <div>
-      <h1 className="m-3 font-serif text-">Login</h1>
-      <div>
-        <form className="grid grid-cols-1 p-2 m-10 border rounded-lg lg:w-1/2 w-100 bg-secondary border-bordercolor">
+    <Container>
+      {" "}
+      <form className="flex flex-col items-center justify-center border rounded-lg bg-opacity-60 lg:w-1/2 w-100 bg-secondary border-bordercolor">
+        <div className="w-full max-w-xs form-control">
           <label className="label label-primary">
-            <span className="namefont label-text text-warning">Email:</span>
+            <span className="namefont label-text text-warning">Email</span>
           </label>
-          <input
+          <Input
             type="email"
             name="email"
             value={values.email || ""}
             onChange={handleChanges}
             autoComplete="current-email"
-            className="block w-full p-3 mt-1 font-serif bg-gray-700 border-gray-300 rounded-md shadow-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           />
-          <br />
+        </div>
+        <br />
+        <div className="w-full max-w-xs form-control">
           <label className="label label-primary">
-            <span className="namefont label-text text-warning ">Password:</span>
+            <span className="namefont label-text text-warning ">Password</span>
           </label>
-          <input
+          <Input
             type="password"
             name="password"
             value={values.password || ""}
             onChange={handleChanges}
             autoComplete="current-password"
-            className="block w-full p-3 mt-1 font-serif bg-gray-700 border-gray-300 rounded-md shadow-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           />
-          <br />
-          <button onClick={handleClick} className="mx-8 my-4 shadow-md namefont btn btn-info">
-            Login
-          </button>
-        </form>
-        {location.state?.message && <div>{location.state?.message}</div>}
-        {error && <div>{error}</div>}
-      </div>
-    </div>
+        </div>
+        <br />
+        <button onClick={handleClick} className="mx-8 my-4 shadow-md namefont btn btn-accent btn-wide">
+          Login
+        </button>
+      </form>
+      {location.state?.message && <div>{location.state?.message}</div>}
+      {error && <div>{error}</div>}
+    </Container>
   );
 };
 
