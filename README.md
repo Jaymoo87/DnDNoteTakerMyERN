@@ -32,7 +32,8 @@ The app has two tables in its PostgreSQL database:
   - `user_id` (integer): The ID of the user who created the note.
 - `users` table: This table has the following columns:
   - `id` (integer): The unique ID of the user.
-  - `username` (string): The username of the user.
+  - `first_name` (string): The first name of the user.
+  - `last_name` (string): The last name of the user.
   - `password` (string): The hashed password of the user.
 
 ## Structure
@@ -45,7 +46,7 @@ The app is structured as follows:
 
 ## Authentication
 
-The app uses a basic form of authentication, where users are required to provide their username and password to log in to their account. Passwords are hashed using the bcrypt library to ensure security.
+The app uses a basic JSON webtoken authentication using localStorage, where users are required to provide their username and password to log in to their account. Passwords are hashed using the bcrypt library to ensure security.
 
 ## How to Use
 
