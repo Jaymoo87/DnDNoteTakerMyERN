@@ -1,68 +1,72 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useAuth } from '../utilities/use-auth';
+import { useForm } from '../utilities/use-form';
+import authService from '../services/auth';
 
-import authService from "../services/auth";
-import { useForm } from "../utilities/use-form";
-import { useAuth } from "../utilities/use-auth";
-import Input from "../components/Input";
-import { Container } from "../components";
+import { Button, Container, Input } from '../components';
 
 interface LoginProps {}
 
 const Login = (props: LoginProps) => {
-  const { signin } = useAuth();
   const location = useLocation();
-  const [error, setError] = useState<string>("");
-
-  const { values, handleChanges } = useForm<{ [key: string]: string }>({});
-
+  const { signin } = useAuth();
+  const [error, setError] = useState<string>('');
+  const { values, handleChanges } = useForm<{ [key: string]: string }>({
+    email: 'guest@test.com',
+    password: 'password123',
+  });
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-
     authService
       .loginUser(values)
-      .then(() => signin("/private"))
+      .then(() => signin('/profile'))
       .catch((e) => setError(e.message));
   };
 
   return (
-    <Container>
-      <h1>Login</h1>
-
+    <Container className="py-16 text-center">
+      <h1 className="mb-4 text-4xl font-bold text-primary">Welcome back, adventurer!</h1>
+      <p className="mb-8 text-lg text-secondary">Log in to access your D&D notes.</p>
       <form className="flex flex-col items-center justify-center">
         <div className="w-full max-w-xs form-control">
-          <label htmlFor="" className="label">
+          <label htmlFor="email" className="label">
             <span className="label-text">Email</span>
           </label>
           <Input
             type="email"
             name="email"
-            value={values.email || ""}
-            onChange={handleChanges}
             autoComplete="current-email"
+            value={values.email || ''}
+            onChange={handleChanges}
           />
         </div>
         <div className="w-full max-w-xs form-control">
-          <label htmlFor="" className="label">
+          <label htmlFor="password" className="label">
             <span className="label-text">Password</span>
           </label>
           <Input
             type="password"
             name="password"
-            value={values.password || ""}
-            onChange={handleChanges}
             autoComplete="current-password"
-            bordered={false}
+            value={values.password || ''}
+            onChange={handleChanges}
           />
         </div>
-        <button onClick={handleClick} className="mt-3 btn btn-primary btn-wide">
+        <Button onClick={handleClick} className="mt-5" color="primary" wide>
           Login
-        </button>
+        </Button>
+        {error && <p className="mt-4 text-error">{error}</p>}
       </form>
       {location.state?.message && <div>{location.state?.message}</div>}
-      {error && <div>{error}</div>}
+      <p className="mt-12 text-sm text-secondary">
+        Don't have an account yet? Start your journey by{' '}
+        <a className="text-accent" href="/signup">
+          signing up
+        </a>
+        .
+      </p>
     </Container>
   );
 };
-
 export default Login;

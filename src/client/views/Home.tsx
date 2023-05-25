@@ -1,40 +1,92 @@
-import React from "react";
-import { Container, Toast } from "../components";
-
-import { useAuth } from "../utilities/use-auth";
+import React from 'react';
+import { useAuth } from '../utilities/use-auth';
+import { useNavigate } from 'react-router-dom';
+import { Container, Hero, Button, Card } from '../components';
 
 interface HomeProps {}
 
 const Home = (props: HomeProps) => {
   const { authenticated } = useAuth();
+  const navigate = useNavigate();
 
-  const testToast = () => {
-    Toast.error("woooo");
+  const handleClick = () => {
+    if (authenticated) {
+      navigate('notes/new');
+      return;
+    }
+
+    navigate('register');
   };
 
   return (
-    <Container className="container px-2 mx-auto md:px-0" id="special">
-      <h1>Home {authenticated ? "logged in" : "logged out"}</h1>
-      <div>
-        <button onClick={testToast} className="btn btn-primary">
-          Test Button
-        </button>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, reiciendis, labore explicabo laboriosam
-          illum aspernatur eveniet enim voluptatem magnam, repellat perspiciatis fugit accusamus dignissimos cum animi
-          voluptate ipsum sapiente. Fugit? Autem quas enim, fugiat reprehenderit cumque ullam amet iste dolores alias
-          nulla iusto consequatur? Omnis id dolore expedita, ipsa nostrum, aliquid autem quo dolores aut veniam sit
-          necessitatibus pariatur. Accusantium! Obcaecati vitae, porro deleniti perferendis, debitis qui laborum
-          exercitationem aut rerum officia inventore sunt iure dolorum assumenda distinctio? Excepturi non, error
-          blanditiis sit animi corporis? Provident est reprehenderit beatae debitis. Nisi natus, dolore ut laboriosam
-          laborum doloremque odit quia similique sapiente atque minus vero minima iusto exercitationem libero? Nemo iste
-          repellat fugiat debitis dolorum esse quisquam numquam architecto quibusdam placeat? Placeat fugit perspiciatis
-          dolore eaque recusandae beatae possimus saepe aspernatur corrupti nihil voluptatum iste dolores eligendi nulla
-          officia, molestias sit temporibus culpa repudiandae omnis explicabo error? Odit ipsa obcaecati illum!
+    <div>
+      <Hero
+        className="py-16 bg-base-200"
+        title="D&D NoteMaster"
+        subtitle="The best app to manage your Dungeons & Dragons notes."
+      >
+        <Button color="primary" size="lg" className="text-white" onClick={handleClick}>
+          Start Taking Notes
+        </Button>
+      </Hero>
+      <Container className="py-16">
+        <h2 className="mb-4 text-2xl font-bold text-center">Welcome to D&D NoteMaster</h2>
+        <p className="mb-8 text-lg">
+          D&D NoteMaster is your digital companion for your D&D adventures. Easily create, manage, and organize your
+          campaign notes. Track your quests, NPCs, and party members, all in one place. Dive deeper into your campaign
+          with D&D NoteMaster!
         </p>
-      </div>
-    </Container>
+      </Container>
+      <Container>
+        <h2 className="mb-4 text-2xl font-bold text-center">Key Features</h2>
+        <div className="grid grid-cols-1 gap-4 mb-8 md:grid-cols-2 lg:grid-cols-4">
+          <Card className="shadow">
+            <div className="card-body">
+              <h2 className="card-title">Read Notes</h2>
+              <p>Easily read and navigate through your notes.</p>
+            </div>
+          </Card>
+          <Card className="shadow">
+            <div className="card-body">
+              <h2 className="card-title">Add Notes</h2>
+              <p>Create new notes with ease and detail.</p>
+            </div>
+          </Card>
+          <Card className="shadow">
+            <div className="card-body">
+              <h2 className="card-title">Edit Notes</h2>
+              <p>Update your notes as your campaign evolves.</p>
+            </div>
+          </Card>
+          <Card className="shadow">
+            <div className="card-body">
+              <h2 className="card-title">Delete Notes</h2>
+              <p>Remove old notes with just a click.</p>
+            </div>
+          </Card>
+        </div>
+      </Container>
+      <Container className="py-16">
+        <h2 className="mb-4 text-2xl font-bold text-center">Testimonials</h2>
+        <div className="grid grid-cols-1 gap-4 mb-8 md:grid-cols-2">
+          <Card className="shadow">
+            <div className="card-body">
+              <h2 className="card-title">Tiamat, Queen of Dragons</h2>
+              <p>D&D NoteMaster helps me keep my followers and lore organized. Highly recommended!</p>
+            </div>
+          </Card>
+          <Card className="shadow">
+            <div className="card-body">
+              <h2 className="card-title">Bahamut, the Platinum Dragon</h2>
+              <p>
+                As a deity of D&D, I've seen many tools, but D&D NoteMaster stands out with its convenience and ease of
+                use.
+              </p>
+            </div>
+          </Card>
+        </div>
+      </Container>
+    </div>
   );
 };
-
 export default Home;

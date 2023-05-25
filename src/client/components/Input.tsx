@@ -1,23 +1,23 @@
-import React from "react";
+import React from 'react';
 
-import clsx from "clsx";
-import { twMerge } from "tailwind-merge";
-import { ComponentColors, ComponentSizes } from "./types";
+import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
+import { ComponentColors, ComponentSizes } from './types';
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  variant?: ComponentColors;
+interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'color'> {
+  color?: ComponentColors;
   bordered?: boolean;
-  sizing?: ComponentSizes;
+  size?: ComponentSizes;
 }
 
-const Input = ({ value, placeholder, type, className, variant, bordered = true, sizing, ...rest }: InputProps) => {
+const Input = ({ value, placeholder, type, className, color, bordered = true, size, ...rest }: InputProps) => {
   const classes = twMerge(
-    "input",
+    'input',
     className,
     clsx({
-      "input-bordered": bordered,
-      [`input-${variant}`]: variant,
-      [`input-${sizing}`]: sizing,
+      'input-bordered': bordered,
+      [`input-${color}`]: color,
+      [`input-${size}`]: size,
     })
   );
 

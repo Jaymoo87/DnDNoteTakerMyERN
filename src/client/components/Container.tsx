@@ -1,6 +1,6 @@
-import { HtmlAttributes } from "csstype";
-import React from "react";
-import { twMerge } from "tailwind-merge";
+import { HtmlAttributes } from 'csstype';
+import React from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
@@ -9,7 +9,7 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const Container = ({ children, className, ...rest }: ContainerProps) => {
   return (
-    <div className={twMerge("container px-2 mx-auto md:px-0", className)} {...rest}>
+    <div className={twMerge('container px-2 mx-auto md:px-0', className)} {...rest}>
       {children}
     </div>
   );
