@@ -1,3 +1,5 @@
+// " as const " tells Typescript that the array or value is immutable/readonly. will allow for detailed intellisense.
+
 export const brandColors = ['primary', 'secondary', 'accent'] as const;
 
 export const bgColors = ['base-100', 'base-200', 'base-300', 'neutral'] as const;

@@ -5,6 +5,7 @@ import { useForm } from '../utilities/use-form';
 import authService from '../services/auth';
 
 import { Button, Container, Input } from '../components';
+import { Link } from 'react-router-dom';
 
 interface LoginProps {}
 
@@ -61,9 +62,9 @@ const Login = (props: LoginProps) => {
       {location.state?.message && <div>{location.state?.message}</div>}
       <p className="mt-12 text-sm text-secondary">
         Don't have an account yet? Start your journey by{' '}
-        <a className="text-accent" href="/signup">
+        <Link className="text-accent" to="/register">
           signing up
-        </a>
+        </Link>
         .
       </p>
     </Container>

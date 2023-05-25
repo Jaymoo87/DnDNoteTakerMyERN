@@ -7,6 +7,7 @@ import { Button, Container, Toast } from '../components';
 
 //test
 import ReactDOM from 'react-dom';
+import dayjs from 'dayjs';
 
 const modalRoot = document.getElementById('modal-root');
 
@@ -64,7 +65,7 @@ const NoteDetails = (props: NoteDetailsProps) => {
         {details && (
           <div className="mb-8 text-lg">
             <h2 className="mb-2 text-2xl font-semibold text-primary">{details.first_name}</h2>
-            <small className="text-secondary">{details.created_at}</small>
+            <small className="text-secondary">{dayjs(details.created_at).format('MMMM D, YYYY')}</small>
             <div className="mt-4 text-secondary">
               {details.body.split('\n').map((para, idx) => (
                 <p key={`para-idx-${idx}`}>

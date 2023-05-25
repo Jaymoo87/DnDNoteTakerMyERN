@@ -21,7 +21,7 @@ const Input = ({ value, placeholder, type, className, color, bordered = true, si
     })
   );
 
-  return <input className={classes} type={type} placeholder={placeholder} value={value} />;
+  return <input className={classes} type={type} placeholder={placeholder} value={value} {...rest} />;
 };
 
 export default Input;
