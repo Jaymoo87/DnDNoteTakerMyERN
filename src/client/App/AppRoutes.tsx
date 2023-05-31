@@ -1,8 +1,8 @@
-import React from "react";
-import { Routes, Route, useParams } from "react-router-dom";
+import React from 'react';
+import { Routes, Route, useParams } from 'react-router-dom';
 
-import { Home, MyNotes, Login, Register, Notes, NoteDetails, AddNote, UpdateNote } from "../views";
-import { Private } from "../components";
+import { Home, MyNotes, Login, Register, Notes, NoteDetails, AddNote, UpdateNote } from '../views';
+import { CharacterCreation, Private } from '../components';
 
 interface AppRoutesProps {}
 
@@ -13,6 +13,7 @@ const AppRoutes = (props: AppRoutesProps) => {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/character" element={<CharacterCreation />} />
       <Route
         path="/notes/mynotes/:userid"
         element={

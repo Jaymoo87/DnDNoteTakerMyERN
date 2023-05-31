@@ -25,7 +25,7 @@ const CharacterCreation = (props: Props) => {
     <div className="flex justify-center ">
       <form
         action="submit"
-        className="grid justify-items-center bg-center bg-cover  bg-no-repeat bg-[url(../public/assets/formbackground.png)] p-10 rounded-xl w-1/2 "
+        className="grid w-1/2 p-10 bg-gray-400 bg-center bg-no-repeat bg-cover justify-items-center rounded-xl "
       >
         <div className="grid w-4/5 grid-cols-1 grid-rows-1 p-2 m-3 rounded-lg ">
           <label htmlFor="name" className="mx-3 font-bold ">

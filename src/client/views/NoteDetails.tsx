@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import { GiScrollUnfurled } from "react-icons/gi";
-import dayjs from "dayjs";
-import moment from "moment";
-import { UserNoteTable } from "../../types";
+import React, { useEffect, useState } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { GiScrollUnfurled } from 'react-icons/gi';
+import dayjs from 'dayjs';
 
-import noteService from "../services/notes";
+import { UserNoteTable } from '../../types';
 
-import { Toast } from "../components";
+import noteService from '../services/notes';
+
+import { Toast } from '../components';
 
 interface NoteDetailsProps {}
 
@@ -27,11 +27,11 @@ const NoteDetails = (props: NoteDetailsProps) => {
     noteService
       .deleteNote(id)
       .then(() => {
-        Toast.success("the note has been thrown into the abyss");
-        nav("/notes");
+        Toast.success('the note has been thrown into the abyss');
+        nav('/notes');
       })
       .catch((e) => {
-        Toast.error("a force denies this destruction");
+        Toast.error('a force denies this destruction');
         console.log(e.message);
       });
   };
@@ -47,14 +47,14 @@ const NoteDetails = (props: NoteDetailsProps) => {
       {details && (
         <div className="p-4 m-2 shadow bg-[url(../../../pictures/greyParchment.jpg)] shadow-slate-800 rounded-xl">
           <h2 className="dndfont">{details.first_name}'s Note</h2>
-          <small className="namefont">{dayjs(details.created_at).format("MM-DD-YYYY")}</small>
+          <small className="namefont">{dayjs(details.created_at).format('MM-DD-YYYY')}</small>
           <div className="flex justify-end">
             <Link to={`/notes/${id}/update`} className="m-2 btnfont btn btn-neutral btn-xs" state={details?.body}>
               Edit
             </Link>
           </div>
           <div>
-            {details.body.split("\n").map((para, index) => (
+            {details.body.split('\n').map((para, index) => (
               <p className=" notefont" key={`para-index-${index}`}>
                 {para}
                 <br />
@@ -64,7 +64,7 @@ const NoteDetails = (props: NoteDetailsProps) => {
         </div>
       )}
       <div className="flex justify-end">
-        <Link to={"/notes"} className="m-2 btnfont btn btn-info">
+        <Link to={'/notes'} className="m-2 btnfont btn btn-info">
           Back
         </Link>
         <button onClick={handleDelete} className="m-2 btnfont btn btn-warning">

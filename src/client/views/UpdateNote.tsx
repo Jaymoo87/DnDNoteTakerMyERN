@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
-import { useForm } from "../utilities/use-form";
-import notesService from "../services/notes";
-import { GiScrollQuill } from "react-icons/gi";
+import React, { useEffect } from 'react';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useForm } from '../utilities/use-form';
+import notesService from '../services/notes';
+import { GiScrollQuill } from 'react-icons/gi';
+import { Textarea } from '../components';
 
 interface UpdateNoteProps {}
 
@@ -11,7 +12,7 @@ const UpdateNote = (props: UpdateNoteProps) => {
   const nav = useNavigate();
   const { state } = useLocation();
 
-  const { values, handleChanges, setValues } = useForm<{ body: string }>({ body: state || "" });
+  const { values, handleChanges, setValues } = useForm<{ body: string }>({ body: state || '' });
 
   useEffect(() => {
     if (!state) {
@@ -38,7 +39,7 @@ const UpdateNote = (props: UpdateNoteProps) => {
           <label className="label label-primary">
             <span className="font-extrabold label-text text-warning ">Write it Down, Again</span>
           </label>
-          <textarea
+          <Textarea
             name="body"
             value={values.body}
             rows={20}
