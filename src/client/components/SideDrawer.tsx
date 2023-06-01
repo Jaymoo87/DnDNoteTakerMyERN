@@ -1,5 +1,6 @@
-import React from "react";
-import { NavLink, useParams } from "react-router-dom";
+import React from 'react';
+import { SiOpenai } from 'react-icons/si';
+import { NavLink, useParams } from 'react-router-dom';
 
 interface SideDrawerProps {
   toggleVisible: () => void;
@@ -25,6 +26,11 @@ const SideDrawer = ({ toggleVisible }: SideDrawerProps) => {
       </li>
       <li>
         <NavLink to="/notes/new">AddNote</NavLink>
+      </li>
+      <li>
+        <NavLink to="/character">
+          Create Origin Story <SiOpenai />
+        </NavLink>
       </li>
     </ul>
   );

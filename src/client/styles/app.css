@@ -2,27 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Handlee&family=Trade+Winds&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Trade+Winds&display=swap');
 
 :root {
-  font-family: "Handlee", cursive;
+  font-family: 'Handlee', cursive;
 }
 
 .dndfont {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: large;
   font-style: italic;
 }
 
 .notefont {
-  font-family: "Handlee", cursive;
+  font-family: 'Handlee', cursive;
 
   font-weight: bold;
   color: #54a7ba;
 }
 
 .btnfont {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 600;
 }
 
@@ -33,9 +33,17 @@
 }
 
 .namefont {
-  font-family: "Trade Winds", cursive;
+  font-family: 'Trade Winds', cursive;
+  letter-spacing: 1.5px;
+  color: #8ec7d3;
 }
 
+.inputfont {
+  font-family: 'Trade Winds', cursive;
+  color: #8ec7d3;
+}
+
+Textarea,
 textarea,
 .homeintro {
   user-select: none;

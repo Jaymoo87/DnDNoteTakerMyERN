@@ -21,7 +21,7 @@ const CharacterCreation = ({}: Props) => {
   const [characterClass, setCharacterClass] = useState<string>('');
   const [homeland, setHomeland] = useState<string>('');
 
-  const [role, setRole] = useState<string>('I am a dungeon master that loves origin stories.');
+  const [role, setRole] = useState<string>('A dungeon master that loves origin stories.');
   const [content, setContent] = useState<string>('');
 
   const editor = useEditor({
@@ -29,7 +29,8 @@ const CharacterCreation = ({}: Props) => {
     content,
     editorProps: {
       attributes: {
-        class: 'prose prose-sm xl:prose-2xl focus:outline-none w-full max-w-full shadow-md shadow-lg p-4 rounded-md',
+        class:
+          'prose prose-sm xl:prose-2xl focus:outline-none w-full max-w-full shadow-md shadow-lg p-4 rounded-md notefont',
       },
     },
   });
@@ -62,13 +63,13 @@ const CharacterCreation = ({}: Props) => {
   const { raceOptions, classOptions, homelandOptions } = characterOptions;
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center ">
       <form
         action="submit"
-        className="grid w-1/2 p-10 bg-gray-400 bg-center bg-no-repeat bg-cover justify-items-center rounded-xl "
+        className="grid lg:w-1/2 sm:m-1 lg:m-0 p-10 justify-items-center rounded-xl bg-[url(../../../pictures/originBackground.png)] bg-center bg-no-repeat bg-cover "
       >
         <div className="grid w-4/5 grid-cols-1 grid-rows-1 p-2 m-3 rounded-lg ">
-          <label htmlFor="name" className="mx-3 font-bold ">
+          <label htmlFor="name" className="mx-3 font-bold namefont ">
             Name
           </label>
           <input
@@ -79,7 +80,7 @@ const CharacterCreation = ({}: Props) => {
             id="name"
           />
 
-          <label className="mx-3 font-bold " htmlFor="age">
+          <label className="mx-3 font-bold namefont " htmlFor="age">
             Age
           </label>
           <input
@@ -90,7 +91,7 @@ const CharacterCreation = ({}: Props) => {
             id="age"
           />
 
-          <label className="mx-3 font-bold " htmlFor="race">
+          <label className="mx-3 font-bold namefont " htmlFor="race">
             Race
           </label>
           <select
@@ -107,7 +108,7 @@ const CharacterCreation = ({}: Props) => {
               ))}
           </select>
 
-          <label className="mx-3 font-bold ">Class</label>
+          <label className="mx-3 font-bold text-blue-300 namefont ">Class</label>
           <select
             value={characterClass}
             onChange={(e) => setCharacterClass(e.target.value)}
@@ -122,7 +123,7 @@ const CharacterCreation = ({}: Props) => {
               ))}
           </select>
 
-          <label className="mx-3 font-bold "> Homeland </label>
+          <label className="mx-3 font-bold namefont "> Homeland </label>
           <select
             value={homeland}
             onChange={(e) => setHomeland(e.target.value)}
@@ -138,18 +139,19 @@ const CharacterCreation = ({}: Props) => {
           </select>
         </div>
       </form>
-      <div className="w-1/4 p-3 mb-3 rounded-md ">
-        <h4 className="flex justify-center p-0 m-0 mb-2">Hi! Adjust My Attitude If You Need To</h4>
-        <small className="flex justify-center">(tell the origin story creator how you would like it to act)</small>
-        <div className="flex justify-center gap-5">
+      <div className="flex flex-col w-full p-3 m-4 rounded-md bg-opacity-70 sm:w-3/4 lg:w-1/2 sm:flex-col bg-slate-600">
+        <h4 className="flex justify-center p-0 m-0 mb-2 ">Hi! Adjust My Attitude If You Need To</h4>
+        <div className="flex flex-col items-center justify-center gap-5 ">
           <input
             placeholder="Role"
             onChange={(e) => setRole(e.target.value)}
             value={role}
-            className="w-full px-3 py-1 text-center text-black border-2 "
+            className="w-full px-3 py-1 text-center text-black border-2 rounded-lg inputfont focus:outline-none"
           />
+          <small className="flex justify-center">(tell the origin story creator how you would like it to act)</small>
+          <h1 className="inputfont">Summon The Storyteller</h1>
           <button type="button" onClick={postAiContent}>
-            <GiMagicSwirl className="w-8 h-8 hover:text-blue-300" />
+            <GiMagicSwirl className="w-8 h-8 text-blue-800 hover:text-blue-300 " />
           </button>
         </div>
         <span className="flex justify-center p-0 mt-3 text-sm">
@@ -160,8 +162,8 @@ const CharacterCreation = ({}: Props) => {
           </Link>
         </span>
       </div>
-      <div className="flex justify-center w-3/5 bg-[url(../../../pictures/greyParchment.png)]">
-        <div className="w-3/4 p-5 rounded-lg ">
+      <div className="flex justify-center rounded-lg w-full sm:w-1/2 lg:w-3/5 bg-[url(../../../pictures/greyParchment.png)]">
+        <div className="rounded-lg lg:w-3/4 sm:w-full lg:p-5 sm:p-1 ">
           {content && (
             <>
               <EditorMenuBar editor={editor} />
@@ -169,10 +171,12 @@ const CharacterCreation = ({}: Props) => {
             </>
           )}
 
-          <EditorContent editor={editor} className="text-blue-300 " />
+          <EditorContent editor={editor} className="" />
         </div>
       </div>
-      {!content && <p className="flex justify-center mt-5 font-bold text-red text-wh-900 ">{contentError}</p>}
+      {!content && (
+        <p className="flex justify-center p-2 mt-5 font-bold text-red-600 bg-red-200 rounded-lg ">{contentError}</p>
+      )}
     </div>
   );
 };
