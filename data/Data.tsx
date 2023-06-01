@@ -7,7 +7,7 @@ export const characterOptions = {
     { value: 'halfling', label: 'Halfling' },
     { value: 'half-orc', label: 'Half-Orc' },
     { value: 'tiefling', label: 'Tiefling' },
-    { value: 'tiefling', label: 'Tiefling' },
+
     { value: 'elf', label: 'Elf' },
     { value: 'dragonborn', label: 'Dragonborn' },
     { value: 'aarakocra', label: 'Aarakocra' },
