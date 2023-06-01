@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import notesService from "../services/notes";
-import { GiTiedScroll } from "react-icons/gi";
-import { useAuth } from "../utilities/use-auth";
-import { UserNoteTable } from "../../types";
+import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import notesService from '../services/notes';
+import { GiTiedScroll } from 'react-icons/gi';
+import { useAuth } from '../utilities/use-auth';
+import { UserNoteTable } from '../../types';
 
 interface NotesProps {}
 
@@ -39,7 +39,7 @@ const Notes = () => {
         <div className="flex flex-col-reverse justify-center w-9/10 ">
           {notes.map((note) => (
             <div
-              className="p-4 m-2 border shadow h-56 border-warning bg-[url(../../../pictures/greyParchment.jpg)] shadow-slate-800 rounded-xl"
+              className="p-4 m-2 border shadow h-56 border-warning bg-[url(../../../pictures/greyParchment.png)] shadow-slate-800 rounded-xl"
               key={`note-key-${note.id}`}
             >
               <h2 className="pb-3 text-secondary namefont">{note.first_name}'s Note</h2>

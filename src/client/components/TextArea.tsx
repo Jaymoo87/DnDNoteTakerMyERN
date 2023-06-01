@@ -1,7 +1,7 @@
-import React from "react";
-import { twMerge } from "tailwind-merge";
-import { ComponentSizes } from "./types";
-import clsx from "clsx";
+import React from 'react';
+import { twMerge } from 'tailwind-merge';
+import { ComponentSizes } from './types';
+import clsx from 'clsx';
 
 interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   bordered?: boolean;
@@ -10,10 +10,10 @@ interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement
 
 const TextArea = ({ bordered, sizing, name, value, rows, className, ...rest }: TextAreaProps): JSX.Element => {
   const classes = twMerge(
-    "block w-full p-3 my-3 bg-[url(../../../pictures/greyParchment.jpg)] text-secondary notefont border-gray-700 rounded-md shadow-md focus:border-gray-700 focus:ring focus:ring-gray-600 focus:ring-opacity-70",
+    'block w-full p-3 my-3 bg-[url(../../../pictures/greyParchment.png)] text-secondary notefont border-gray-700 rounded-md shadow-md focus:border-gray-700 focus:ring focus:ring-gray-600 focus:ring-opacity-70',
     className,
     clsx({
-      "textarea-bordered": bordered,
+      'textarea-bordered': bordered,
       [`textarea-${sizing}`]: sizing,
     })
   );

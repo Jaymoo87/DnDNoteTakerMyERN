@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Link, Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
-import { useAuth } from "../utilities/use-auth";
-import notesService from "../services/notes";
-import { GiScrollUnfurled, GiTiedScroll } from "react-icons/gi";
+import React, { useEffect, useState } from 'react';
+import { Link, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useAuth } from '../utilities/use-auth';
+import notesService from '../services/notes';
+import { GiScrollUnfurled, GiTiedScroll } from 'react-icons/gi';
 
 interface MyNotesProps {}
 
@@ -37,7 +37,7 @@ const MyNotes = () => {
 
       {userNotes?.map((notes) => (
         <div
-          className="p-4 m-2 border shadow h-52 border-warning bg-[url(../../../pictures/greyParchment.jpg)] shadow-slate-800 rounded-xl"
+          className="p-4 m-2 border shadow h-52 border-warning bg-[url(../../../pictures/greyParchment.png)] shadow-slate-800 rounded-xl"
           key={`note-key-${notes.id}`}
         >
           <h2 className="pb-3 text-secondary namefont">{notes.first_name}'s Note</h2>

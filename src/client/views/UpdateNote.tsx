@@ -44,7 +44,7 @@ const UpdateNote = (props: UpdateNoteProps) => {
             value={values.body}
             rows={20}
             onChange={handleChanges}
-            className="block w-full p-3 mt-1 bg-[url(../../../pictures/greyParchment.jpg)] text-secondary notefont border-gray-300 rounded-md shadow-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            className="block w-full p-3 mt-1 bg-[url(../../../pictures/greyParchment.png)] text-secondary notefont border-gray-300 rounded-md shadow-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           />
           <div className="flex justify-center p-3">
             <button type="button" className="w-1/3 btnfont btn" onClick={handleUpdate}>

@@ -45,7 +45,7 @@ const NoteDetails = (props: NoteDetailsProps) => {
         <h1 className="font-extrabold dndfont text-warning">Note Details</h1>
       </div>
       {details && (
-        <div className="p-4 m-2 shadow bg-[url(../../../pictures/greyParchment.jpg)] shadow-slate-800 rounded-xl">
+        <div className="p-4 m-2 shadow bg-[url(../../../pictures/greyParchment.png)] shadow-slate-800 rounded-xl">
           <h2 className="dndfont">{details.first_name}'s Note</h2>
           <small className="namefont">{dayjs(details.created_at).format('MM-DD-YYYY')}</small>
           <div className="flex justify-end">

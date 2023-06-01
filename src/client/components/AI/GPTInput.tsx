@@ -29,10 +29,16 @@ const GPTInput = (props: Props) => {
   };
 
   return (
-    <div className="input-container">
-      <input value={value} onChange={(e) => setValue(e.target.value)} />
+    <div className="flex flex-col items-center justify-center w-full m-5 ">
+      <h2>Set the tone of your origin story</h2>
+      <input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder="I am a storyteller that loves to tell origin stories"
+        className="w-1/3 p-3 m-3 rounded-lg"
+      />
       <div id="submit" onClick={getMessages}>
-        <FaArrowRight />
+        <FaArrowRight className="m-5 text-xl" />
       </div>
     </div>
   );
