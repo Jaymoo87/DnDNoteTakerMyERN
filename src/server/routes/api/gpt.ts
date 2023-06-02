@@ -26,7 +26,7 @@ gptRouter.post('/', async (req: Request, res: any) => {
         messages: [
           {
             role: 'user',
-            content: `Create a 1750 word dungeons and dragons character origin story in paragraphs for:  ${newCharacterName}, a ${age} year old ${race} ${characterClass} from ${homeland} who is about to start a new adventure. `,
+            content: `Create a 600 word dungeons and dragons character origin story in paragraphs for:  ${newCharacterName}, a ${age} year old ${race} ${characterClass} from ${homeland} who is about to start a new adventure. `,
             // content: 'just simple hello for testing api',
           },
           {

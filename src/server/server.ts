@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import * as path from 'path';
+import cors from 'cors';
 
 import routes from './routes';
 import config from './config';
@@ -13,6 +14,7 @@ app.get('/status', (req, res) => res.sendStatus(200));
 app.head('/status', (req, res) => res.sendStatus(200));
 
 configurePassport(app);
+app.use(cors());
 app.use(express.static('public'));
 app.use(express.json());
 app.use(morgan('dev'));

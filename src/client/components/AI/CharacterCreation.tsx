@@ -39,7 +39,7 @@ const CharacterCreation = ({}: Props) => {
   const postAiContent = async () => {
     editor.chain().focus().setContent('Generating Your Life. Wait a Moment...').run();
 
-    const response = await fetch(`/api/gpt`, {
+    const response = await fetch(`https://dndnotes.fly.dev/api/gpt`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
