@@ -39,10 +39,11 @@ const Modal = ({ onClose, children }: ModalProps) => {
 interface NoteDetailsProps {}
 
 const NoteDetails = (props: NoteDetailsProps) => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const { id } = useParams();
   const navigate = useNavigate();
+
   const [details, setDetails] = useState<{ [key: string]: string }>(null);
   useEffect(() => {
     noteService
@@ -52,10 +53,12 @@ const NoteDetails = (props: NoteDetailsProps) => {
   }, [id]);
 
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
-    noteService
-      .deleteNote(id)
-      .then(() => navigate('/notes'))
-      .catch((e) => Toast.error(e.message));
+    if (window.confirm('Are you sure you want to delete?')) {
+      noteService
+        .deleteNote(id)
+        .then(() => navigate('/notes'))
+        .catch((e) => Toast.error(e.message));
+    }
   };
 
   return (
