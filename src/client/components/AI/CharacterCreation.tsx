@@ -65,6 +65,7 @@ const CharacterCreation = ({}: Props) => {
   return (
     <div className="flex flex-col items-center ">
       <form
+        id="character"
         action="submit"
         className="grid lg:w-1/2 sm:m-1 lg:m-0 p-10 justify-items-center rounded-xl bg-[url(../../../pictures/originBackground.png)] bg-center bg-no-repeat bg-cover "
       >
@@ -73,24 +74,24 @@ const CharacterCreation = ({}: Props) => {
             Name
           </label>
           <input
+            autoComplete="name"
             value={newCharacterName}
             className="p-1 mx-2 mb-4 text-black rounded-lg focus:outline-stone-200 hover:shadow-xl "
             onChange={(e) => setNewCharacterName(e.target.value)}
             placeholder="Name"
             id="name"
           />
-
           <label className="mx-3 font-bold namefont " htmlFor="age">
             Age
           </label>
           <input
+            autoComplete="age"
             value={age}
             className="p-1 mx-2 mb-4 text-black rounded-lg focus:outline-stone-200 hover:shadow-xl"
             onChange={(e) => setAge(Number(e.target.value))}
             placeholder="Age"
             id="age"
           />
-
           <label className="mx-3 font-bold namefont " htmlFor="race">
             Race
           </label>
@@ -98,42 +99,53 @@ const CharacterCreation = ({}: Props) => {
             value={race}
             onChange={(e) => setRace(e.target.value)}
             className="p-1 mx-2 mb-4 font-bold text-black rounded-lg scroll focus:outline-stone-200 hover:shadow-xl"
+            id="race"
           >
-            <option value="0">Select a Race</option>
+            <option key="race" value="0">
+              Select a Race
+            </option>
             {raceOptions &&
-              raceOptions.map((r, i) => (
+              raceOptions.map((r) => (
                 <>
-                  <option key={`race-key-${i}`}>{r.label}</option>
+                  <option key={`race-key-${r.value}`}>{r.label}</option>
                 </>
               ))}
           </select>
-
-          <label className="mx-3 font-bold text-blue-300 namefont ">Class</label>
+          <label htmlFor="class" className="mx-3 font-bold text-blue-300 namefont ">
+            Class
+          </label>
           <select
             value={characterClass}
             onChange={(e) => setCharacterClass(e.target.value)}
             className="p-1 mx-2 mb-4 font-bold text-black rounded-lg focus:outline-stone-200 hover:shadow-xl"
+            id="class"
           >
-            <option value="0">Select a Class</option>
+            <option key="class" value="0">
+              Select a Class
+            </option>
             {classOptions &&
-              classOptions.map((c, index) => (
+              classOptions.map((c) => (
                 <>
-                  <option key={`class-key-${index}`}>{c.label}</option>
+                  <option key={`class-key-${c.value}`}>{c.label}</option>
                 </>
               ))}
           </select>
-
-          <label className="mx-3 font-bold namefont "> Homeland </label>
+          <label htmlFor="homeland" className="mx-3 font-bold namefont ">
+            Homeland
+          </label>
           <select
             value={homeland}
             onChange={(e) => setHomeland(e.target.value)}
             className="p-1 mx-2 mb-4 font-bold text-black rounded-lg focus:outline-stone-200 hover:shadow-xl"
+            id="homeland"
           >
-            <option value="0">Select a Homeland</option>
+            <option key="selectHomeland" value="0">
+              Select a Homeland
+            </option>
             {homelandOptions &&
-              homelandOptions.map((h, i) => (
+              homelandOptions.map((h) => (
                 <>
-                  <option key={`homland-key-${i}`}>{h.label}</option>
+                  <option key={`homeland-key-${h.value}`}>{h.label}</option>
                 </>
               ))}
           </select>
@@ -155,9 +167,8 @@ const CharacterCreation = ({}: Props) => {
           </button>
         </div>
         <span className="flex justify-center p-0 mt-3 text-sm">
-          powered by{' '}
+          powered by
           <Link to="https://openai.com/">
-            {' '}
             <SiOpenai className="mx-2 mt-1" />
           </Link>
         </span>

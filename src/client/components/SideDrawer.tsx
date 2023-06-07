@@ -9,25 +9,25 @@ interface SideDrawerProps {
 const SideDrawer = ({ toggleVisible }: SideDrawerProps) => {
   return (
     <ul className="p-4 overflow-y-auto font-bold menu w-80 text-primary bg-secondary ">
-      <li>
+      <li key="home">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
+      <li key="login">
         <NavLink to="/login">Login</NavLink>
       </li>
 
-      <li>
+      <li key="register">
         <NavLink to="/register">Register</NavLink>
       </li>
-      <li>
+      <li key="notes">
         <NavLink to="/notes" end>
           Notes
         </NavLink>
       </li>
-      <li>
+      <li key="newnote">
         <NavLink to="/notes/new">AddNote</NavLink>
       </li>
-      <li>
+      <li key="character">
         <NavLink to="/character">
           Create Origin Story <SiOpenai />
         </NavLink>
