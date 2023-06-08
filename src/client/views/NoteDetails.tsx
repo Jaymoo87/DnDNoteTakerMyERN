@@ -5,36 +5,37 @@ import noteService from '../services/notes';
 import { GiReturnArrow, GiQuillInk, GiTrashCan } from 'react-icons/gi';
 import { Button, Container, Toast } from '../components';
 
-//test
+import { Modal } from '../components';
 import ReactDOM from 'react-dom';
 import dayjs from 'dayjs';
 
-const modalRoot = document.getElementById('modal-root');
+// const modalRoot = document.getElementById('modal-root');
 
-interface ModalProps {
-  onClose: () => void;
-  children: React.ReactNode;
-}
+// interface ModalProps {
+//   onClose: () => void;
+//   onConfirm: () => void;
+//   children?: React.ReactNode;
+// }
 
-const Modal = ({ onClose, children }: ModalProps) => {
-  const el = document.createElement('div');
+// const Modal = ({ onClose, children, onConfirm }: ModalProps) => {
+//   const el = document.createElement('div');
 
-  useEffect(() => {
-    modalRoot.appendChild(el);
-  }, []);
+//   useEffect(() => {
+//     modalRoot.appendChild(el);
+//   }, []);
 
-  return ReactDOM.createPortal(
-    <div className="fixed top-0 left-0 flex items-center justify-center w-full h-full bg-black bg-opacity-50">
-      <div className="relative bg-white rounded-lg shadow-lg">
-        <button className="absolute top-0 right-0 m-2 text-lg leading-none hover:text-red-500" onClick={onClose}>
-          &times;
-        </button>
-        {children}
-      </div>
-    </div>,
-    el
-  );
-};
+//   return ReactDOM.createPortal(
+//     <div className="fixed top-0 left-0 flex items-center justify-center w-full h-full bg-black bg-opacity-50">
+//       <div className="relative bg-white rounded-lg shadow-lg">
+//         <button className="absolute top-0 right-0 m-2 text-lg leading-none hover:text-red-500" onClick={onClose}>
+//           &times;
+//         </button>
+//         {children}
+//       </div>
+//     </div>,
+//     el
+//   );
+// };
 
 interface NoteDetailsProps {}
 
@@ -42,7 +43,7 @@ const NoteDetails = (props: NoteDetailsProps) => {
   const [showModal, setShowModal] = useState<boolean>(false);
 
   const { id } = useParams();
-  const navigate = useNavigate();
+  const nav = useNavigate();
 
   const [details, setDetails] = useState<{ [key: string]: string }>(null);
   useEffect(() => {
@@ -52,13 +53,18 @@ const NoteDetails = (props: NoteDetailsProps) => {
       .catch((e) => Toast.error(e.message));
   }, [id]);
 
-  const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (window.confirm('Are you sure you want to delete?')) {
-      noteService
-        .deleteNote(id)
-        .then(() => navigate('/notes'))
-        .catch((e) => Toast.error(e.message));
-    }
+  const openDeleteModal = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setShowModal(true);
+  };
+
+  const handledelete = () => {
+    noteService
+      .deleteNote(id)
+      .then(() => {
+        nav('/notes');
+        setShowModal(false);
+      })
+      .catch((e) => Toast.error(e.message));
   };
 
   return (
@@ -92,12 +98,18 @@ const NoteDetails = (props: NoteDetailsProps) => {
             <GiQuillInk className="mr-2" />
             Edit Note
           </Link>
-          <Button color="ghost" onClick={handleDelete} className="flex items-center justify-center w-full lg:w-auto">
+          <Button color="ghost" onClick={openDeleteModal} className="flex items-center justify-center w-full lg:w-auto">
             <GiTrashCan className="mr-2" />
             This note stinks
           </Button>
         </div>
       </Container>
+      {showModal && (
+        <Modal onConfirm={handledelete} onClose={() => setShowModal(false)}>
+          <h2 className="mb-4 text-2xl font-bold text-primary">Delete Note</h2>
+          <p className="mb-8 text-lg text-secondary">Are you sure you want to delete this note?</p>
+        </Modal>
+      )}
     </>
   );
 };
